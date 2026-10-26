@@ -1,0 +1,2745 @@
+<!DOCTYPE html>
+<html class="ods_444c95d3-3293-468b-8d65-ceb33c1832c1" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS 9.4" name="generator"/>
+<title>Results: 01_import_.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c section > table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c section > pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c div > table,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c div > pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c article > table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c article > pre,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j section > table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j section > pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j div > table,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j div > pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j article > table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j article > pre,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c p.note, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c p.warning, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c p.error, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c p.fatal,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j p.note, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j p.warning, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j p.error, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j p.fatal,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.c > table.layoutcontainer, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.l table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.l pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.l p.note,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.l p.warning, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.l p.error, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.l p.fatal { margin-left: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.c table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.c pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.c p.note,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.c p.warning, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.c p.error, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r p.note,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r table, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r pre, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r p.note,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r p.warning, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r p.error, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion.r p.fatal { margin-right: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 article, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 aside, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 details, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 figcaption, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 figure, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 footer, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 header, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 hgroup, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 nav, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 section { display: block }
+html.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 { font-size: 100% }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 ul, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 dd { margin: 0 0 0 40px }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 nav ul, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 img { border: 0; vertical-align: middle }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 svg:not(:root) { overflow: hidden }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 figure { margin: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 table { border-collapse: collapse; border-spacing: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 p { margin-top: 0; text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 h1.heading1 { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 h2.heading2 { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 h3.heading3 { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 h4.heading4 { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 h5.heading5 { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 h6.heading6 { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 span { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 table { margin-bottom: 1em }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 td, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 td[class$="fixed"], .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 th[class$="fixed"] { white-space: pre }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 section, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 article { padding-top: 1px; padding-bottom: 8px }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .stacked-value { text-align: left; display: block }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .stacked-cell > .stacked-value, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 td.data > td.data, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 th.data > td.data, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 th.data > th.data, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 td.data > th.data, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 th.header > th.header { border: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .stacked-cell > div.data { border-width: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > p { margin: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .batch { display: table }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .toc { display: none }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .proc_note_group, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .proc_title_group { margin-bottom: 1em }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 p.proctitle { margin: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 p.note, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 p.warning, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 p.error, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 p.fatal { display: table }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .notebanner, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .warnbanner, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .errorbanner, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .fatalbanner,
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .notecontent, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .warncontent, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .errorcontent, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .notebanner, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .warnbanner, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .errorbanner, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .fatalbanner { padding-right: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body > div > ol li { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .c { text-align: center }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .r { text-align: right }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .l { text-align: left }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .j { text-align: justify }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .d { text-align: right }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .b { vertical-align: bottom }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .m { vertical-align: middle }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .t { vertical-align: top }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .accessiblecaption {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 a:active { color: #800080 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .batch > tbody, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .batch > thead, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .batch { border: hidden; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > colgroup > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > colgroup, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > * > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > thead, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > tbody, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer > tfoot { border: none; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .cell, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .contentfolder, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .contentproclabel, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .data, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .graph > tbody, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .graph > thead, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .graph { border: hidden; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .heading1, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .heading2, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .heading3, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .heading4, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .heading5, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .heading6 { font-family: Arial, Helvetica, sans-serif }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .indexaction, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutcontainer, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 a:link { color: #0000ff }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list3, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list4, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list5, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list6, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list7, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list8, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem3, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem4, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem5, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem6, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem7, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem8, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .output > tbody, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .output > thead, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .output { border: hidden; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .pagesproclabel, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > colgroup > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > colgroup, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > * > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > thead, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > tbody, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip > tfoot { border: none; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter10, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter2, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter3, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter4, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter5, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter6, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter7, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter8, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle10, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle2, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle3, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle4, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle5, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle6, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle7, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle8, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > colgroup > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > colgroup, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > * > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > thead, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > tbody, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer > tfoot { border: none; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .table > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .table > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .table { border: hidden; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > colgroup > col, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > colgroup, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > * > tr, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > thead, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > tbody, .ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer > tfoot { border: none; }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 a:visited { color: #800080 }
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_444c95d3-3293-468b-8d65-ceb33c1832c1 .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_444c95d3-3293-468b-8d65-ceb33c1832c1" class="c body">
+<h1 class="body toc">Results: 01_import_.sas</h1>
+<section data-name="Contents" data-sec-type="proc">
+<div id="IDX" class="proc_title_group">
+<p class="c proctitle">The CONTENTS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Contents Procedure</h1>
+<section>
+<h1 class="contentfolder toc">WORK.CUSTOMERS_RAW</h1>
+<article aria-label="Attributes">
+<h1 class="contentitem toc">Attributes</h1>
+<table class="table" style="border-spacing: 0" aria-label="Attributes">
+<caption aria-label="Attributes"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Name</th>
+<td class="data">WORK.CUSTOMERS_RAW</td>
+<th class="rowheader" scope="row">Observations</th>
+<td class="data">4060</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Member Type</th>
+<td class="data">DATA</td>
+<th class="rowheader" scope="row">Variables</th>
+<td class="data">19</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Engine</th>
+<td class="data">V9</td>
+<th class="rowheader" scope="row">Indexes</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Created</th>
+<td class="data">10/23/2026 21:40:44</td>
+<th class="rowheader" scope="row">Observation Length</th>
+<td class="data">208</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Last Modified</th>
+<td class="data">10/23/2026 21:40:44</td>
+<th class="rowheader" scope="row">Deleted Observations</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Protection</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Compressed</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Set Type</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Sorted</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Label</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Representation</th>
+<td class="data">SOLARIS_X86_64, LINUX_X86_64, ALPHA_TRU64, LINUX_IA64</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Encoding</th>
+<td class="data">utf-8  Unicode (UTF-8)</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX1" aria-label="Engine/Host Information">
+<h1 class="contentitem toc">Engine/Host Information</h1>
+<table class="table" style="border-spacing: 0" aria-label="Engine/Host Information">
+<caption aria-label="Engine/Host Information"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Engine/Host Dependent Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Page Size</th>
+<td class="data">131072</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Pages</th>
+<td class="data">7</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">First Data Page</th>
+<td class="data">1</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Max Obs per Page</th>
+<td class="data">629</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Obs in First Data Page</th>
+<td class="data">608</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Repairs</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Filename</th>
+<td class="data">/saswork/SAS_work0F490001150A_odaws01-apse1-2.oda.sas.com/SAS_work9D440001150A_odaws01-apse1-2.oda.sas.com/customers_raw.sas7bdat</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Release Created</th>
+<td class="data">9.0401M8</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Host Created</th>
+<td class="data">Linux</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Inode Number</th>
+<td class="data">67111538</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Access Permission</th>
+<td class="data">rw-r--r--</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Owner Name</th>
+<td class="data">u64620803</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size</th>
+<td class="data">1MB</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size (bytes)</th>
+<td class="data">1048576</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX2" aria-label="Variables">
+<h1 class="contentitem toc">Variables</h1>
+<table class="table" style="border-spacing: 0" aria-label="Variables">
+<caption aria-label="Variables"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="6" scope="colgroup">Alphabetic List of Variables and Attributes</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">#</th>
+<th class="b header" scope="col">Variable</th>
+<th class="b header" scope="col">Type</th>
+<th class="r b header" scope="col">Len</th>
+<th class="b header" scope="col">Format</th>
+<th class="b header" scope="col">Informat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">age</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">annual_income</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">city</td>
+<td class="data">Char</td>
+<td class="r data">18</td>
+<td class="data">$18.</td>
+<td class="data">$18.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">credit_score</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">customer_id</td>
+<td class="data">Char</td>
+<td class="r data">9</td>
+<td class="data">$9.</td>
+<td class="data">$9.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">customer_since</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">date_of_birth</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">dependents</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">education</td>
+<td class="data">Char</td>
+<td class="r data">13</td>
+<td class="data">$13.</td>
+<td class="data">$13.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">email</td>
+<td class="data">Char</td>
+<td class="r data">35</td>
+<td class="data">$35.</td>
+<td class="data">$35.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">employment_status</td>
+<td class="data">Char</td>
+<td class="r data">14</td>
+<td class="data">$14.</td>
+<td class="data">$14.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">first_name</td>
+<td class="data">Char</td>
+<td class="r data">7</td>
+<td class="data">$7.</td>
+<td class="data">$7.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">gender</td>
+<td class="data">Char</td>
+<td class="r data">6</td>
+<td class="data">$6.</td>
+<td class="data">$6.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">home_ownership</td>
+<td class="data">Char</td>
+<td class="r data">6</td>
+<td class="data">$6.</td>
+<td class="data">$6.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">last_name</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">marital_status</td>
+<td class="data">Char</td>
+<td class="r data">8</td>
+<td class="data">$8.</td>
+<td class="data">$8.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">phone</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">region</td>
+<td class="data">Char</td>
+<td class="r data">5</td>
+<td class="data">$5.</td>
+<td class="data">$5.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">state</td>
+<td class="data">Char</td>
+<td class="r data">13</td>
+<td class="data">$13.</td>
+<td class="data">$13.</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article id="IDX3" aria-label="Data Set WORK.CUSTOMERS_RAW">
+<h1 class="contentitem toc">Data Set WORK.CUSTOMERS_RAW</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.CUSTOMERS_RAW">
+<caption aria-label="Data Set WORK.CUSTOMERS_RAW"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">customer_id</th>
+<th class="header" scope="col">gender</th>
+<th class="header" scope="col">first_name</th>
+<th class="header" scope="col">last_name</th>
+<th class="r header" scope="col">age</th>
+<th class="header" scope="col">date_of_birth</th>
+<th class="header" scope="col">marital_status</th>
+<th class="r header" scope="col">dependents</th>
+<th class="header" scope="col">education</th>
+<th class="header" scope="col">employment_status</th>
+<th class="r header" scope="col">annual_income</th>
+<th class="r header" scope="col">credit_score</th>
+<th class="header" scope="col">home_ownership</th>
+<th class="header" scope="col">state</th>
+<th class="header" scope="col">region</th>
+<th class="header" scope="col">city</th>
+<th class="header" scope="col">customer_since</th>
+<th class="header" scope="col">email</th>
+<th class="r header" scope="col">phone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">CUST00122</td>
+<td class="data">F</td>
+<td class="data">Bhavna</td>
+<td class="data">Verma</td>
+<td class="r data">31</td>
+<td class="data">1994-12-24</td>
+<td class="data">Married</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Self-Employed</td>
+<td class="r data">.</td>
+<td class="r data">.</td>
+<td class="data">Family</td>
+<td class="data">maharashtra</td>
+<td class="data">West</td>
+<td class="data">Pune</td>
+<td class="data">2019-01-18</td>
+<td class="data">bhavna.verma0122@example.com</td>
+<td class="r data">9407575221</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">CUST03905</td>
+<td class="data">Male</td>
+<td class="data">Naveen</td>
+<td class="data">Singh</td>
+<td class="r data">39</td>
+<td class="data">19/05/1987</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Professional</td>
+<td class="data">Salaried</td>
+<td class="r data">531000</td>
+<td class="r data">562</td>
+<td class="data">Rent</td>
+<td class="data">Uttar Pradesh</td>
+<td class="data">North</td>
+<td class="data">Kanpur</td>
+<td class="data">29/05/2020</td>
+<td class="data">naveen.singh3905@example.com</td>
+<td class="r data">9186806257</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">CUST03988</td>
+<td class="data">Male</td>
+<td class="data">Harish</td>
+<td class="data">Subramanian</td>
+<td class="r data">34</td>
+<td class="data">1992-04-01</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Graduate</td>
+<td class="data">Retired</td>
+<td class="r data">290000</td>
+<td class="r data">664</td>
+<td class="data">Rent</td>
+<td class="data">West Bengal</td>
+<td class="data">East</td>
+<td class="data">Kolkata</td>
+<td class="data">14-Aug-2016</td>
+<td class="data">harish.subramanian3988@example.com</td>
+<td class="r data">9745825303</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">CUST01999</td>
+<td class="data">Female</td>
+<td class="data">Deepa</td>
+<td class="data">Chauhan</td>
+<td class="r data">43</td>
+<td class="data">21.04.1983</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">987000</td>
+<td class="r data">700</td>
+<td class="data">Own</td>
+<td class="data">Kerala</td>
+<td class="data">South</td>
+<td class="data">Kozhikode</td>
+<td class="data">2020-06-05</td>
+<td class="data">deepa.chauhan1999@example.com</td>
+<td class="r data">9437472516</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">CUST01489</td>
+<td class="data">female</td>
+<td class="data">Deepa</td>
+<td class="data">Bose</td>
+<td class="r data">27</td>
+<td class="data">1999-01-05</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Post Graduate</td>
+<td class="data">Business Owner</td>
+<td class="r data">1271000</td>
+<td class="r data">565</td>
+<td class="data">Rent</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">MADURAI</td>
+<td class="data">21-Aug-2023</td>
+<td class="data">deepa.bose1489@example.com</td>
+<td class="r data">9737910293</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">CUST01117</td>
+<td class="data">Male</td>
+<td class="data">Sanjay</td>
+<td class="data">Naidu</td>
+<td class="r data">49</td>
+<td class="data">13/01/1977</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Business Owner</td>
+<td class="r data">1087000</td>
+<td class="r data">540</td>
+<td class="data">Own</td>
+<td class="data">Telangana</td>
+<td class="data">South</td>
+<td class="data">Hyderabad</td>
+<td class="data">2015-09-18</td>
+<td class="data">sanjay.naidu1117@example.com</td>
+<td class="r data">9440502991</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">CUST03928</td>
+<td class="data">Female</td>
+<td class="data">Pooja</td>
+<td class="data">Gowda</td>
+<td class="r data">150</td>
+<td class="data">13-Jun-1987</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">286000</td>
+<td class="r data">662</td>
+<td class="data">Rent</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Salem</td>
+<td class="data">03/07/2015</td>
+<td class="data">pooja.gowda3928@example.com</td>
+<td class="r data">9119293028</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">CUST01610</td>
+<td class="data">Male</td>
+<td class="data">Mohan</td>
+<td class="data">Shah</td>
+<td class="r data">28</td>
+<td class="data">03/12/1997</td>
+<td class="data">Widowed</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">531000</td>
+<td class="r data">525</td>
+<td class="data">Own</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Chennai</td>
+<td class="data">2023-04-30</td>
+<td class="data">mohan.shah1610@example.com</td>
+<td class="r data">9119501076</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">CUST03608</td>
+<td class="data">Male</td>
+<td class="data">Rajesh</td>
+<td class="data">Das</td>
+<td class="r data">30</td>
+<td class="data">31/10/1995</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">High School</td>
+<td class="data">Salaried</td>
+<td class="r data">561000</td>
+<td class="r data">627</td>
+<td class="data">Rent</td>
+<td class="data">Uttar Pradesh</td>
+<td class="data">North</td>
+<td class="data">Noida</td>
+<td class="data">2013-01-01</td>
+<td class="data"> &#160;</td>
+<td class="r data">9311148888</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">CUST02226</td>
+<td class="data">Male</td>
+<td class="data">Ganesh</td>
+<td class="data">Joshi</td>
+<td class="r data">46</td>
+<td class="data">1980-05-04</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">498000</td>
+<td class="r data">618</td>
+<td class="data">Own</td>
+<td class="data">Maharashtra</td>
+<td class="data">West</td>
+<td class="data">Nagpur</td>
+<td class="data">2020-08-03</td>
+<td class="data">ganesh.joshi2226@example.com</td>
+<td class="r data">9728198841</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX4" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Total_Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">4060</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Contents" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX5" class="proc_title_group">
+<p class="c proctitle">The CONTENTS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Contents Procedure</h1>
+<section>
+<h1 class="contentfolder toc">WORK.LOANS_RAW</h1>
+<article aria-label="Attributes">
+<h1 class="contentitem toc">Attributes</h1>
+<table class="table" style="border-spacing: 0" aria-label="Attributes">
+<caption aria-label="Attributes"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Name</th>
+<td class="data">WORK.LOANS_RAW</td>
+<th class="rowheader" scope="row">Observations</th>
+<td class="data">6060</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Member Type</th>
+<td class="data">DATA</td>
+<th class="rowheader" scope="row">Variables</th>
+<td class="data">19</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Engine</th>
+<td class="data">V9</td>
+<th class="rowheader" scope="row">Indexes</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Created</th>
+<td class="data">10/23/2026 21:40:47</td>
+<th class="rowheader" scope="row">Observation Length</th>
+<td class="data">192</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Last Modified</th>
+<td class="data">10/23/2026 21:40:47</td>
+<th class="rowheader" scope="row">Deleted Observations</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Protection</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Compressed</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Set Type</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Sorted</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Label</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Representation</th>
+<td class="data">SOLARIS_X86_64, LINUX_X86_64, ALPHA_TRU64, LINUX_IA64</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Encoding</th>
+<td class="data">utf-8  Unicode (UTF-8)</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX6" aria-label="Engine/Host Information">
+<h1 class="contentitem toc">Engine/Host Information</h1>
+<table class="table" style="border-spacing: 0" aria-label="Engine/Host Information">
+<caption aria-label="Engine/Host Information"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Engine/Host Dependent Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Page Size</th>
+<td class="data">131072</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Pages</th>
+<td class="data">9</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">First Data Page</th>
+<td class="data">1</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Max Obs per Page</th>
+<td class="data">682</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Obs in First Data Page</th>
+<td class="data">659</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Repairs</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Filename</th>
+<td class="data">/saswork/SAS_work0F490001150A_odaws01-apse1-2.oda.sas.com/SAS_work9D440001150A_odaws01-apse1-2.oda.sas.com/loans_raw.sas7bdat</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Release Created</th>
+<td class="data">9.0401M8</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Host Created</th>
+<td class="data">Linux</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Inode Number</th>
+<td class="data">67111542</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Access Permission</th>
+<td class="data">rw-r--r--</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Owner Name</th>
+<td class="data">u64620803</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size</th>
+<td class="data">1MB</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size (bytes)</th>
+<td class="data">1310720</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX7" aria-label="Variables">
+<h1 class="contentitem toc">Variables</h1>
+<table class="table" style="border-spacing: 0" aria-label="Variables">
+<caption aria-label="Variables"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="6" scope="colgroup">Alphabetic List of Variables and Attributes</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">#</th>
+<th class="b header" scope="col">Variable</th>
+<th class="b header" scope="col">Type</th>
+<th class="r b header" scope="col">Len</th>
+<th class="b header" scope="col">Format</th>
+<th class="b header" scope="col">Informat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">branch_channel</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">collateral_value</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">customer_id</td>
+<td class="data">Char</td>
+<td class="r data">9</td>
+<td class="data">$9.</td>
+<td class="data">$9.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">days_past_due</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">default_date</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">default_flag</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">emi_amount</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">interest_rate</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">loan_amount</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">loan_id</td>
+<td class="data">Char</td>
+<td class="r data">9</td>
+<td class="data">$9.</td>
+<td class="data">$9.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">loan_purpose</td>
+<td class="data">Char</td>
+<td class="r data">18</td>
+<td class="data">$18.</td>
+<td class="data">$18.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">loan_status</td>
+<td class="data">Char</td>
+<td class="r data">9</td>
+<td class="data">$9.</td>
+<td class="data">$9.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">loan_type</td>
+<td class="data">Char</td>
+<td class="r data">13</td>
+<td class="data">$13.</td>
+<td class="data">$13.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">maturity_date</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">origination_date</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">outstanding_balance</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">overdue_amount</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">snapshot_date</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">term_months</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX8" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Total_Loan_Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">6060</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article id="IDX9" aria-label="Data Set WORK.LOANS_RAW">
+<h1 class="contentitem toc">Data Set WORK.LOANS_RAW</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.LOANS_RAW">
+<caption aria-label="Data Set WORK.LOANS_RAW"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">loan_id</th>
+<th class="header" scope="col">customer_id</th>
+<th class="header" scope="col">loan_type</th>
+<th class="header" scope="col">loan_purpose</th>
+<th class="r header" scope="col">loan_amount</th>
+<th class="r header" scope="col">interest_rate</th>
+<th class="r header" scope="col">term_months</th>
+<th class="r header" scope="col">emi_amount</th>
+<th class="header" scope="col">origination_date</th>
+<th class="header" scope="col">maturity_date</th>
+<th class="r header" scope="col">collateral_value</th>
+<th class="header" scope="col">branch_channel</th>
+<th class="header" scope="col">loan_status</th>
+<th class="r header" scope="col">days_past_due</th>
+<th class="r header" scope="col">overdue_amount</th>
+<th class="r header" scope="col">outstanding_balance</th>
+<th class="r header" scope="col">default_flag</th>
+<th class="header" scope="col">default_date</th>
+<th class="header" scope="col">snapshot_date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">LN0005706</td>
+<td class="data">CUST03195</td>
+<td class="data">Education</td>
+<td class="data">Overseas Study</td>
+<td class="r data">1195000</td>
+<td class="r data">11.76</td>
+<td class="r data">60</td>
+<td class="r data">26437.41</td>
+<td class="data">03-Jul-2022</td>
+<td class="data">03/07/2027</td>
+<td class="r data">.</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">250665.82</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">LN0000969</td>
+<td class="data">CUST02110</td>
+<td class="data">Education</td>
+<td class="data">Domestic Study</td>
+<td class="r data">1030000</td>
+<td class="r data">.</td>
+<td class="r data">60</td>
+<td class="r data">22559.42</td>
+<td class="data">28-Dec-2025</td>
+<td class="data">28.12.2030</td>
+<td class="r data">.</td>
+<td class="data">DSA / Agent</td>
+<td class="data">current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">909953.33</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">LN0001670</td>
+<td class="data">CUST03609</td>
+<td class="data">Home</td>
+<td class="data">Plot Purchase</td>
+<td class="r data">2305000</td>
+<td class="r data">9.88</td>
+<td class="r data">120</td>
+<td class="r data">30307.78</td>
+<td class="data">17/08/2023</td>
+<td class="data">2033-08-17</td>
+<td class="r data">2775000</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1817256.37</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">LN0003551</td>
+<td class="data">CUST03354</td>
+<td class="data">Home</td>
+<td class="data">Construction</td>
+<td class="r data">2225000</td>
+<td class="r data">9.37</td>
+<td class="r data">300</td>
+<td class="r data">19239.06</td>
+<td class="data">16/01/2023</td>
+<td class="data">2048-01-16</td>
+<td class="r data">2581000</td>
+<td class="data">Online</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">2127502.32</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30-Sep-2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">LN0003796</td>
+<td class="data">CUST01622</td>
+<td class="data">Personal</td>
+<td class="data">Wedding</td>
+<td class="r data">115000</td>
+<td class="r data">14.7</td>
+<td class="r data">60</td>
+<td class="r data">2717.77</td>
+<td class="data">10/06/2023</td>
+<td class="data">2028-06-10</td>
+<td class="r data">.</td>
+<td class="data">DSA / Agent</td>
+<td class="data">Overdue</td>
+<td class="r data">51</td>
+<td class="r data">5435.54</td>
+<td class="r data">54187.66</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30.09.2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">LN0003187</td>
+<td class="data">CUST00774</td>
+<td class="data">Education</td>
+<td class="data">Domestic Study</td>
+<td class="r data">200000</td>
+<td class="r data">11.34</td>
+<td class="r data">120</td>
+<td class="r data">2793.63</td>
+<td class="data">23-Mar-2024</td>
+<td class="data">23-Mar-2034</td>
+<td class="r data">.</td>
+<td class="data">Online</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">168826.91</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">LN0004505</td>
+<td class="data">CUST00335</td>
+<td class="data">Auto</td>
+<td class="data">Two Wheeler</td>
+<td class="r data">600000</td>
+<td class="r data">11.77</td>
+<td class="r data">48</td>
+<td class="r data">15732.63</td>
+<td class="data">12-Dec-2025</td>
+<td class="data">2029-12-12</td>
+<td class="r data">544000</td>
+<td class="data">Online</td>
+<td class="data">Late</td>
+<td class="r data">18</td>
+<td class="r data">15732.63</td>
+<td class="r data">518460.76</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">LN0000138</td>
+<td class="data">CUST01292</td>
+<td class="data">HOME</td>
+<td class="data">Purchase</td>
+<td class="r data">1680000</td>
+<td class="r data">9.38</td>
+<td class="r data">180</td>
+<td class="r data">17421.53</td>
+<td class="data">01/07/2021</td>
+<td class="data">01/07/2036</td>
+<td class="r data">2353000</td>
+<td class="data">Online</td>
+<td class="data">Overdue</td>
+<td class="r data">60</td>
+<td class="r data">34843.06</td>
+<td class="r data">1353218.5</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">LN0004879</td>
+<td class="data">CUST03684</td>
+<td class="data">Home</td>
+<td class="data">Plot Purchase</td>
+<td class="r data">8280000</td>
+<td class="r data">7.65</td>
+<td class="r data">180</td>
+<td class="r data">77464.1</td>
+<td class="data">2024-04-23</td>
+<td class="data">2039-04-23</td>
+<td class="r data">10704000</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">7496608.72</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">LN0000927</td>
+<td class="data">CUST01298</td>
+<td class="data">Business</td>
+<td class="data">Expansion</td>
+<td class="r data">1180000</td>
+<td class="r data">12.13</td>
+<td class="r data">84</td>
+<td class="r data">20912.35</td>
+<td class="data">28-Sep-2024</td>
+<td class="data">28/09/2031</td>
+<td class="r data">1466000</td>
+<td class="data">Online</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">937344.89</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Contents" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX10" class="proc_title_group">
+<p class="c proctitle">The CONTENTS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Contents Procedure</h1>
+<section>
+<h1 class="contentfolder toc">WORK.PAYMENTS_RAW</h1>
+<article aria-label="Attributes">
+<h1 class="contentitem toc">Attributes</h1>
+<table class="table" style="border-spacing: 0" aria-label="Attributes">
+<caption aria-label="Attributes"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Name</th>
+<td class="data">WORK.PAYMENTS_RAW</td>
+<th class="rowheader" scope="row">Observations</th>
+<td class="data">175294</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Member Type</th>
+<td class="data">DATA</td>
+<th class="rowheader" scope="row">Variables</th>
+<td class="data">10</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Engine</th>
+<td class="data">V9</td>
+<th class="rowheader" scope="row">Indexes</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Created</th>
+<td class="data">10/23/2026 21:41:40</td>
+<th class="rowheader" scope="row">Observation Length</th>
+<td class="data">88</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Last Modified</th>
+<td class="data">10/23/2026 21:41:40</td>
+<th class="rowheader" scope="row">Deleted Observations</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Protection</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Compressed</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Set Type</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Sorted</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Label</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Representation</th>
+<td class="data">SOLARIS_X86_64, LINUX_X86_64, ALPHA_TRU64, LINUX_IA64</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Encoding</th>
+<td class="data">utf-8  Unicode (UTF-8)</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX11" aria-label="Engine/Host Information">
+<h1 class="contentitem toc">Engine/Host Information</h1>
+<table class="table" style="border-spacing: 0" aria-label="Engine/Host Information">
+<caption aria-label="Engine/Host Information"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Engine/Host Dependent Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Page Size</th>
+<td class="data">131072</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Pages</th>
+<td class="data">118</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">First Data Page</th>
+<td class="data">1</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Max Obs per Page</th>
+<td class="data">1486</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Obs in First Data Page</th>
+<td class="data">1451</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Repairs</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Filename</th>
+<td class="data">/saswork/SAS_work0F490001150A_odaws01-apse1-2.oda.sas.com/SAS_work9D440001150A_odaws01-apse1-2.oda.sas.com/payments_raw.sas7bdat</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Release Created</th>
+<td class="data">9.0401M8</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Host Created</th>
+<td class="data">Linux</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Inode Number</th>
+<td class="data">67111536</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Access Permission</th>
+<td class="data">rw-r--r--</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Owner Name</th>
+<td class="data">u64620803</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size</th>
+<td class="data">15MB</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size (bytes)</th>
+<td class="data">15597568</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX12" aria-label="Variables">
+<h1 class="contentitem toc">Variables</h1>
+<table class="table" style="border-spacing: 0" aria-label="Variables">
+<caption aria-label="Variables"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="6" scope="colgroup">Alphabetic List of Variables and Attributes</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">#</th>
+<th class="b header" scope="col">Variable</th>
+<th class="b header" scope="col">Type</th>
+<th class="r b header" scope="col">Len</th>
+<th class="b header" scope="col">Format</th>
+<th class="b header" scope="col">Informat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">amount_due</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">amount_paid</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">days_late</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">due_date</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">YYMMDD10.</td>
+<td class="data">YYMMDD10.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">installment_no</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">late_fee</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">loan_id</td>
+<td class="data">Char</td>
+<td class="r data">9</td>
+<td class="data">$9.</td>
+<td class="data">$9.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">payment_date</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">YYMMDD10.</td>
+<td class="data">YYMMDD10.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">payment_id</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">payment_status</td>
+<td class="data">Char</td>
+<td class="r data">7</td>
+<td class="data">$7.</td>
+<td class="data">$7.</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX13" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Total_Payment_Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">175294</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article id="IDX14" aria-label="Data Set WORK.PAYMENTS_RAW">
+<h1 class="contentitem toc">Data Set WORK.PAYMENTS_RAW</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.PAYMENTS_RAW">
+<caption aria-label="Data Set WORK.PAYMENTS_RAW"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">payment_id</th>
+<th class="header" scope="col">loan_id</th>
+<th class="r header" scope="col">installment_no</th>
+<th class="r header" scope="col">due_date</th>
+<th class="r header" scope="col">payment_date</th>
+<th class="r header" scope="col">amount_due</th>
+<th class="r header" scope="col">amount_paid</th>
+<th class="r header" scope="col">days_late</th>
+<th class="header" scope="col">payment_status</th>
+<th class="r header" scope="col">late_fee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">PAY00135309</td>
+<td class="data">LN0004625</td>
+<td class="r data">23</td>
+<td class="r data">2024-04-19</td>
+<td class="r data">2024-04-19</td>
+<td class="r data">45041.42</td>
+<td class="r data">45041.42</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">PAY00124693</td>
+<td class="data">LN0004256</td>
+<td class="r data">29</td>
+<td class="r data">2025-09-04</td>
+<td class="r data">2025-09-04</td>
+<td class="r data">6764.47</td>
+<td class="r data">6764.47</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">PAY00025408</td>
+<td class="data">LN0000859</td>
+<td class="r data">23</td>
+<td class="r data">2024-03-28</td>
+<td class="r data">2024-03-28</td>
+<td class="r data">51804.24</td>
+<td class="r data">51804.24</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">PAY00119583</td>
+<td class="data">LN0004079</td>
+<td class="r data">27</td>
+<td class="r data">2025-07-20</td>
+<td class="r data">2025-07-20</td>
+<td class="r data">1951.88</td>
+<td class="r data">1951.88</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">PAY00122766</td>
+<td class="data">LN0004187</td>
+<td class="r data">28</td>
+<td class="r data">2026-01-28</td>
+<td class="r data">.</td>
+<td class="r data">26358.38</td>
+<td class="r data">0</td>
+<td class="r data">245</td>
+<td class="data">Missed</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">PAY00168166</td>
+<td class="data">LN0005775</td>
+<td class="r data">2</td>
+<td class="r data">2025-10-12</td>
+<td class="r data">2025-10-14</td>
+<td class="r data">24704.4</td>
+<td class="r data">24704.4</td>
+<td class="r data">2</td>
+<td class="data">Late</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">PAY00049377</td>
+<td class="data">LN0001687</td>
+<td class="r data">48</td>
+<td class="r data">2025-02-22</td>
+<td class="r data">2025-02-22</td>
+<td class="r data">82324.83</td>
+<td class="r data">82324.83</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">PAY00134496</td>
+<td class="data">LN0004594</td>
+<td class="r data">17</td>
+<td class="r data">2025-03-13</td>
+<td class="r data">2025-03-13</td>
+<td class="r data">9822.28</td>
+<td class="r data">9822.28</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">PAY00156902</td>
+<td class="data">LN0005366</td>
+<td class="r data">19</td>
+<td class="r data">2025-05-28</td>
+<td class="r data">2025-05-28</td>
+<td class="r data">128328.38</td>
+<td class="r data">128328.38</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">PAY00086671</td>
+<td class="data">LN0002943</td>
+<td class="r data">12</td>
+<td class="r data">2022-08-21</td>
+<td class="r data">2022-08-21</td>
+<td class="r data">10497.05</td>
+<td class="r data">10497.05</td>
+<td class="r data">0</td>
+<td class="data">On-Time</td>
+<td class="r data">0</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</div>
+</body>
+</html>

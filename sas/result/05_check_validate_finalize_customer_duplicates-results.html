@@ -1,0 +1,3638 @@
+<!DOCTYPE html>
+<html class="ods_9e840864-92e4-40e2-8d26-71a766fd55b5" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS 9.4" name="generator"/>
+<title>Results: 05_check_validate_finalize_customer_duplicates.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c section > table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c section > pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c div > table,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c div > pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c article > table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c article > pre,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j section > table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j section > pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j div > table,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j div > pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j article > table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j article > pre,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c p.note, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c p.warning, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c p.error, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c p.fatal,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j p.note, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j p.warning, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j p.error, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j p.fatal,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.c > table.layoutcontainer, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.l table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.l pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.l p.note,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.l p.warning, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.l p.error, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.l p.fatal { margin-left: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.c table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.c pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.c p.note,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.c p.warning, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.c p.error, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r p.note,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r table, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r pre, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r p.note,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r p.warning, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r p.error, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion.r p.fatal { margin-right: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 article, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 aside, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 details, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 figcaption, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 figure, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 footer, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 header, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 hgroup, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 nav, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 section { display: block }
+html.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 { font-size: 100% }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 ul, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 dd { margin: 0 0 0 40px }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 nav ul, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 img { border: 0; vertical-align: middle }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 svg:not(:root) { overflow: hidden }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 figure { margin: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 table { border-collapse: collapse; border-spacing: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 p { margin-top: 0; text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 h1.heading1 { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 h2.heading2 { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 h3.heading3 { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 h4.heading4 { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 h5.heading5 { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 h6.heading6 { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 span { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 table { margin-bottom: 1em }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 td, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 td[class$="fixed"], .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 th[class$="fixed"] { white-space: pre }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 section, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 article { padding-top: 1px; padding-bottom: 8px }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .stacked-value { text-align: left; display: block }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .stacked-cell > .stacked-value, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 td.data > td.data, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 th.data > td.data, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 th.data > th.data, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 td.data > th.data, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 th.header > th.header { border: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .stacked-cell > div.data { border-width: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > p { margin: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .batch { display: table }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .toc { display: none }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .proc_note_group, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .proc_title_group { margin-bottom: 1em }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 p.proctitle { margin: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 p.note, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 p.warning, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 p.error, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 p.fatal { display: table }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .notebanner, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .warnbanner, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .errorbanner, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .fatalbanner,
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .notecontent, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .warncontent, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .errorcontent, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .notebanner, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .warnbanner, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .errorbanner, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .fatalbanner { padding-right: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body > div > ol li { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .c { text-align: center }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .r { text-align: right }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .l { text-align: left }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .j { text-align: justify }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .d { text-align: right }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .b { vertical-align: bottom }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .m { vertical-align: middle }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .t { vertical-align: top }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .accessiblecaption {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 a:active { color: #800080 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .batch > tbody, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .batch > thead, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .batch { border: hidden; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > colgroup > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > colgroup, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > * > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > thead, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > tbody, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer > tfoot { border: none; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .cell, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .contentfolder, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .contentproclabel, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .data, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .graph > tbody, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .graph > thead, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .graph { border: hidden; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .heading1, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .heading2, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .heading3, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .heading4, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .heading5, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .heading6 { font-family: Arial, Helvetica, sans-serif }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .indexaction, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutcontainer, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 a:link { color: #0000ff }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list3, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list4, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list5, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list6, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list7, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list8, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem3, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem4, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem5, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem6, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem7, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem8, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .output > tbody, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .output > thead, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .output { border: hidden; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .pagesproclabel, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > colgroup > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > colgroup, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > * > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > thead, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > tbody, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip > tfoot { border: none; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter10, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter2, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter3, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter4, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter5, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter6, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter7, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter8, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle10, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle2, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle3, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle4, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle5, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle6, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle7, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle8, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > colgroup > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > colgroup, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > * > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > thead, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > tbody, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer > tfoot { border: none; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .table > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .table > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .table { border: hidden; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > colgroup > col, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > colgroup, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > * > tr, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > thead, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > tbody, .ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer > tfoot { border: none; }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 a:visited { color: #800080 }
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_9e840864-92e4-40e2-8d26-71a766fd55b5 .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_9e840864-92e4-40e2-8d26-71a766fd55b5" class="c body">
+<h1 class="body toc">Results: 05_check_validate_finalize_customer_duplicates.sas</h1>
+<section data-name="SQL" data-sec-type="proc">
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Repeated_ID_Groups</th>
+<th class="r b header" scope="col">Rows_In_Repeated_Groups</th>
+<th class="r b header" scope="col">Rows_Beyond_First_Occurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">60</td>
+<td class="r data">120</td>
+<td class="r data">60</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article id="IDX1" aria-label="Data Set WORK.CUSTOMER_ID_COUNTS">
+<h1 class="contentitem toc">Data Set WORK.CUSTOMER_ID_COUNTS</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.CUSTOMER_ID_COUNTS">
+<caption aria-label="Data Set WORK.CUSTOMER_ID_COUNTS"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">customer_id</th>
+<th class="r header" scope="col">id_count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">CUST00103</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">CUST00201</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">CUST00231</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">CUST00281</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">CUST00350</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">CUST00352</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">CUST00369</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">CUST00421</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">CUST00436</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">CUST00558</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">CUST00611</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">CUST00631</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">CUST00702</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">CUST00711</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">CUST00746</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">CUST00762</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">CUST00774</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">CUST00814</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">CUST00871</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">20</th>
+<td class="data">CUST00997</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">21</th>
+<td class="data">CUST01051</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">22</th>
+<td class="data">CUST01079</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">23</th>
+<td class="data">CUST01099</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">24</th>
+<td class="data">CUST01165</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">25</th>
+<td class="data">CUST01170</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">26</th>
+<td class="data">CUST01240</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">27</th>
+<td class="data">CUST01269</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">28</th>
+<td class="data">CUST01360</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">29</th>
+<td class="data">CUST01399</td>
+<td class="r data">2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">30</th>
+<td class="data">CUST01414</td>
+<td class="r data">2</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article id="IDX2" aria-label="Data Set WORK.CUSTOMER_DUPLICATE_DETAILS">
+<h1 class="contentitem toc">Data Set WORK.CUSTOMER_DUPLICATE_DETAILS</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.CUSTOMER_DUPLICATE_DETAILS">
+<caption aria-label="Data Set WORK.CUSTOMER_DUPLICATE_DETAILS"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">customer_id</th>
+<th class="header" scope="col">gender</th>
+<th class="header" scope="col">first_name</th>
+<th class="header" scope="col">last_name</th>
+<th class="r header" scope="col">age</th>
+<th class="header" scope="col">date_of_birth</th>
+<th class="header" scope="col">marital_status</th>
+<th class="r header" scope="col">dependents</th>
+<th class="header" scope="col">education</th>
+<th class="header" scope="col">employment_status</th>
+<th class="r header" scope="col">annual_income</th>
+<th class="r header" scope="col">credit_score</th>
+<th class="header" scope="col">home_ownership</th>
+<th class="header" scope="col">state</th>
+<th class="header" scope="col">region</th>
+<th class="header" scope="col">city</th>
+<th class="header" scope="col">customer_since</th>
+<th class="header" scope="col">email</th>
+<th class="r header" scope="col">phone</th>
+<th class="header" scope="col">customer_id_clean</th>
+<th class="header" scope="col">gender_clean</th>
+<th class="r header" scope="col">dob_date</th>
+<th class="r header" scope="col">customer_since_date</th>
+<th class="r header" scope="col">age_original</th>
+<th class="r header" scope="col">age_clean</th>
+<th class="header" scope="col">age_quality_flag</th>
+<th class="header" scope="col">city_clean</th>
+<th class="header" scope="col">state_clean</th>
+<th class="header" scope="col">email_clean</th>
+<th class="header" scope="col">phone_clean</th>
+<th class="header" scope="col">income_quality_flag</th>
+<th class="header" scope="col">credit_score_quality_flag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">CUST00103</td>
+<td class="data">Male</td>
+<td class="data">Suresh</td>
+<td class="data">Reddy</td>
+<td class="r data">27</td>
+<td class="data">1999-09-27</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Professional</td>
+<td class="data">Unemployed</td>
+<td class="r data">146000</td>
+<td class="r data">470</td>
+<td class="data">Own</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Jaipur</td>
+<td class="data">2016-09-14</td>
+<td class="data">suresh.reddy0103@example.com</td>
+<td class="r data">9362751573</td>
+<td class="data">CUST00103</td>
+<td class="data">Male</td>
+<td class="r data">27SEP1999</td>
+<td class="r data">14SEP2016</td>
+<td class="r data">27</td>
+<td class="r data">27</td>
+<td class="data">Valid</td>
+<td class="data">Jaipur</td>
+<td class="data">Rajasthan</td>
+<td class="data">suresh.reddy0103@example.com</td>
+<td class="data">9362751573</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">CUST00103</td>
+<td class="data">Male</td>
+<td class="data">Suresh</td>
+<td class="data">Reddy</td>
+<td class="r data">27</td>
+<td class="data">1999-09-27</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Professional</td>
+<td class="data">Unemployed</td>
+<td class="r data">146000</td>
+<td class="r data">470</td>
+<td class="data">Own</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Jaipur</td>
+<td class="data">2016-09-14</td>
+<td class="data">suresh.reddy0103@example.com</td>
+<td class="r data">9362751573</td>
+<td class="data">CUST00103</td>
+<td class="data">Male</td>
+<td class="r data">27SEP1999</td>
+<td class="r data">14SEP2016</td>
+<td class="r data">27</td>
+<td class="r data">27</td>
+<td class="data">Valid</td>
+<td class="data">Jaipur</td>
+<td class="data">Rajasthan</td>
+<td class="data">suresh.reddy0103@example.com</td>
+<td class="data">9362751573</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">CUST00201</td>
+<td class="data">female</td>
+<td class="data">Nisha</td>
+<td class="data">Chauhan</td>
+<td class="r data">41</td>
+<td class="data">04.04.1985</td>
+<td class="data">Married</td>
+<td class="r data">3</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">236000</td>
+<td class="r data">575</td>
+<td class="data">Own</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Udaipur</td>
+<td class="data">2019-07-14</td>
+<td class="data">nisha.chauhan0201@example.com</td>
+<td class="r data">9307479380</td>
+<td class="data">CUST00201</td>
+<td class="data">Female</td>
+<td class="r data">04APR1985</td>
+<td class="r data">14JUL2019</td>
+<td class="r data">41</td>
+<td class="r data">41</td>
+<td class="data">Valid</td>
+<td class="data">Udaipur</td>
+<td class="data">Rajasthan</td>
+<td class="data">nisha.chauhan0201@example.com</td>
+<td class="data">9307479380</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">CUST00201</td>
+<td class="data">female</td>
+<td class="data">Nisha</td>
+<td class="data">Chauhan</td>
+<td class="r data">41</td>
+<td class="data">04.04.1985</td>
+<td class="data">Married</td>
+<td class="r data">3</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">236000</td>
+<td class="r data">575</td>
+<td class="data">Own</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Udaipur</td>
+<td class="data">2019-07-14</td>
+<td class="data">nisha.chauhan0201@example.com</td>
+<td class="r data">9307479380</td>
+<td class="data">CUST00201</td>
+<td class="data">Female</td>
+<td class="r data">04APR1985</td>
+<td class="r data">14JUL2019</td>
+<td class="r data">41</td>
+<td class="r data">41</td>
+<td class="data">Valid</td>
+<td class="data">Udaipur</td>
+<td class="data">Rajasthan</td>
+<td class="data">nisha.chauhan0201@example.com</td>
+<td class="data">9307479380</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">CUST00231</td>
+<td class="data">Male</td>
+<td class="data">Amit</td>
+<td class="data">Sharma</td>
+<td class="r data">38</td>
+<td class="data">28/05/1988</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">455000</td>
+<td class="r data">624</td>
+<td class="data">Own</td>
+<td class="data">kerala</td>
+<td class="data">South</td>
+<td class="data">Kozhikode</td>
+<td class="data">2012-08-28</td>
+<td class="data">amit.sharma0231@example.com</td>
+<td class="r data">9133867483</td>
+<td class="data">CUST00231</td>
+<td class="data">Male</td>
+<td class="r data">28MAY1988</td>
+<td class="r data">28AUG2012</td>
+<td class="r data">38</td>
+<td class="r data">38</td>
+<td class="data">Valid</td>
+<td class="data">Kozhikode</td>
+<td class="data">Kerala</td>
+<td class="data">amit.sharma0231@example.com</td>
+<td class="data">9133867483</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">CUST00231</td>
+<td class="data">Male</td>
+<td class="data">Amit</td>
+<td class="data">Sharma</td>
+<td class="r data">38</td>
+<td class="data">28/05/1988</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">455000</td>
+<td class="r data">624</td>
+<td class="data">Own</td>
+<td class="data">kerala</td>
+<td class="data">South</td>
+<td class="data">Kozhikode</td>
+<td class="data">2012-08-28</td>
+<td class="data">amit.sharma0231@example.com</td>
+<td class="r data">9133867483</td>
+<td class="data">CUST00231</td>
+<td class="data">Male</td>
+<td class="r data">28MAY1988</td>
+<td class="r data">28AUG2012</td>
+<td class="r data">38</td>
+<td class="r data">38</td>
+<td class="data">Valid</td>
+<td class="data">Kozhikode</td>
+<td class="data">Kerala</td>
+<td class="data">amit.sharma0231@example.com</td>
+<td class="data">9133867483</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">CUST00281</td>
+<td class="data">M</td>
+<td class="data">Anil</td>
+<td class="data">Joshi</td>
+<td class="r data">51</td>
+<td class="data">1975-01-11</td>
+<td class="data">Divorced</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Self-Employed</td>
+<td class="r data">562000</td>
+<td class="r data">669</td>
+<td class="data">Rent</td>
+<td class="data">Karnataka</td>
+<td class="data">South</td>
+<td class="data">Bengaluru</td>
+<td class="data">01.07.2010</td>
+<td class="data">anil.joshi0281@example.com</td>
+<td class="r data">9871880299</td>
+<td class="data">CUST00281</td>
+<td class="data">Male</td>
+<td class="r data">11JAN1975</td>
+<td class="r data">01JUL2010</td>
+<td class="r data">51</td>
+<td class="r data">51</td>
+<td class="data">Valid</td>
+<td class="data">Bengaluru</td>
+<td class="data">Karnataka</td>
+<td class="data">anil.joshi0281@example.com</td>
+<td class="data">9871880299</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">CUST00281</td>
+<td class="data">M</td>
+<td class="data">Anil</td>
+<td class="data">Joshi</td>
+<td class="r data">51</td>
+<td class="data">1975-01-11</td>
+<td class="data">Divorced</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Self-Employed</td>
+<td class="r data">562000</td>
+<td class="r data">669</td>
+<td class="data">Rent</td>
+<td class="data">Karnataka</td>
+<td class="data">South</td>
+<td class="data">Bengaluru</td>
+<td class="data">01.07.2010</td>
+<td class="data">anil.joshi0281@example.com</td>
+<td class="r data">9871880299</td>
+<td class="data">CUST00281</td>
+<td class="data">Male</td>
+<td class="r data">11JAN1975</td>
+<td class="r data">01JUL2010</td>
+<td class="r data">51</td>
+<td class="r data">51</td>
+<td class="data">Valid</td>
+<td class="data">Bengaluru</td>
+<td class="data">Karnataka</td>
+<td class="data">anil.joshi0281@example.com</td>
+<td class="data">9871880299</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">CUST00350</td>
+<td class="data">Male</td>
+<td class="data">Ganesh</td>
+<td class="data">Mehta</td>
+<td class="r data">28</td>
+<td class="data">1998-04-12</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">High School</td>
+<td class="data">Unemployed</td>
+<td class="r data">246000</td>
+<td class="r data">456</td>
+<td class="data">Family</td>
+<td class="data">TAMIL NADU</td>
+<td class="data">South</td>
+<td class="data">Coimbatore</td>
+<td class="data">25.12.2022</td>
+<td class="data">ganesh.mehta0350@example.com</td>
+<td class="r data">9727321198</td>
+<td class="data">CUST00350</td>
+<td class="data">Male</td>
+<td class="r data">12APR1998</td>
+<td class="r data">25DEC2022</td>
+<td class="r data">28</td>
+<td class="r data">28</td>
+<td class="data">Valid</td>
+<td class="data">Coimbatore</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">ganesh.mehta0350@example.com</td>
+<td class="data">9727321198</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">CUST00350</td>
+<td class="data">Male</td>
+<td class="data">Ganesh</td>
+<td class="data">Mehta</td>
+<td class="r data">28</td>
+<td class="data">1998-04-12</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">High School</td>
+<td class="data">Unemployed</td>
+<td class="r data">246000</td>
+<td class="r data">456</td>
+<td class="data">Family</td>
+<td class="data">TAMIL NADU</td>
+<td class="data">South</td>
+<td class="data">Coimbatore</td>
+<td class="data">25.12.2022</td>
+<td class="data">ganesh.mehta0350@example.com</td>
+<td class="r data">9727321198</td>
+<td class="data">CUST00350</td>
+<td class="data">Male</td>
+<td class="r data">12APR1998</td>
+<td class="r data">25DEC2022</td>
+<td class="r data">28</td>
+<td class="r data">28</td>
+<td class="data">Valid</td>
+<td class="data">Coimbatore</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">ganesh.mehta0350@example.com</td>
+<td class="data">9727321198</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">CUST00352</td>
+<td class="data">Male</td>
+<td class="data">Rajesh</td>
+<td class="data">Bose</td>
+<td class="r data">21</td>
+<td class="data">16-Apr-2005</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Professional</td>
+<td class="data">Self-Employed</td>
+<td class="r data">416000</td>
+<td class="r data">642</td>
+<td class="data">Rent</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Jaipur</td>
+<td class="data">25/06/2010</td>
+<td class="data">rajesh.bose0352@example.com</td>
+<td class="r data">9822336497</td>
+<td class="data">CUST00352</td>
+<td class="data">Male</td>
+<td class="r data">16APR2005</td>
+<td class="r data">25JUN2010</td>
+<td class="r data">21</td>
+<td class="r data">21</td>
+<td class="data">Valid</td>
+<td class="data">Jaipur</td>
+<td class="data">Rajasthan</td>
+<td class="data">rajesh.bose0352@example.com</td>
+<td class="data">9822336497</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">CUST00352</td>
+<td class="data">Male</td>
+<td class="data">Rajesh</td>
+<td class="data">Bose</td>
+<td class="r data">21</td>
+<td class="data">16-Apr-2005</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Professional</td>
+<td class="data">Self-Employed</td>
+<td class="r data">416000</td>
+<td class="r data">642</td>
+<td class="data">Rent</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Jaipur</td>
+<td class="data">25/06/2010</td>
+<td class="data">rajesh.bose0352@example.com</td>
+<td class="r data">9822336497</td>
+<td class="data">CUST00352</td>
+<td class="data">Male</td>
+<td class="r data">16APR2005</td>
+<td class="r data">25JUN2010</td>
+<td class="r data">21</td>
+<td class="r data">21</td>
+<td class="data">Valid</td>
+<td class="data">Jaipur</td>
+<td class="data">Rajasthan</td>
+<td class="data">rajesh.bose0352@example.com</td>
+<td class="data">9822336497</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">CUST00369</td>
+<td class="data">male</td>
+<td class="data">Prakash</td>
+<td class="data">Joshi</td>
+<td class="r data">45</td>
+<td class="data">1981-04-01</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">593000</td>
+<td class="r data">645</td>
+<td class="data">Own</td>
+<td class="data">DL</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">2014-11-18</td>
+<td class="data">prakash.joshi0369@example.com</td>
+<td class="r data">9356267657</td>
+<td class="data">CUST00369</td>
+<td class="data">Male</td>
+<td class="r data">01APR1981</td>
+<td class="r data">18NOV2014</td>
+<td class="r data">45</td>
+<td class="r data">45</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Dl</td>
+<td class="data">prakash.joshi0369@example.com</td>
+<td class="data">9356267657</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">CUST00369</td>
+<td class="data">male</td>
+<td class="data">Prakash</td>
+<td class="data">Joshi</td>
+<td class="r data">45</td>
+<td class="data">1981-04-01</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">593000</td>
+<td class="r data">645</td>
+<td class="data">Own</td>
+<td class="data">DL</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">2014-11-18</td>
+<td class="data">prakash.joshi0369@example.com</td>
+<td class="r data">9356267657</td>
+<td class="data">CUST00369</td>
+<td class="data">Male</td>
+<td class="r data">01APR1981</td>
+<td class="r data">18NOV2014</td>
+<td class="r data">45</td>
+<td class="r data">45</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Dl</td>
+<td class="data">prakash.joshi0369@example.com</td>
+<td class="data">9356267657</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">CUST00421</td>
+<td class="data">Female</td>
+<td class="data">Shalini</td>
+<td class="data">Chauhan</td>
+<td class="r data">46</td>
+<td class="data">1979-10-28</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">260000</td>
+<td class="r data">552</td>
+<td class="data">Family</td>
+<td class="data">Delhi</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">15-Dec-2013</td>
+<td class="data">shalini.chauhan0421@example.com</td>
+<td class="r data">.</td>
+<td class="data">CUST00421</td>
+<td class="data">Female</td>
+<td class="r data">28OCT1979</td>
+<td class="r data">15DEC2013</td>
+<td class="r data">46</td>
+<td class="r data">46</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Delhi</td>
+<td class="data">shalini.chauhan0421@example.com</td>
+<td class="data"> &#160;</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">CUST00421</td>
+<td class="data">Female</td>
+<td class="data">Shalini</td>
+<td class="data">Chauhan</td>
+<td class="r data">46</td>
+<td class="data">1979-10-28</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">260000</td>
+<td class="r data">552</td>
+<td class="data">Family</td>
+<td class="data">Delhi</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">15-Dec-2013</td>
+<td class="data">shalini.chauhan0421@example.com</td>
+<td class="r data">.</td>
+<td class="data">CUST00421</td>
+<td class="data">Female</td>
+<td class="r data">28OCT1979</td>
+<td class="r data">15DEC2013</td>
+<td class="r data">46</td>
+<td class="r data">46</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Delhi</td>
+<td class="data">shalini.chauhan0421@example.com</td>
+<td class="data"> &#160;</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">CUST00436</td>
+<td class="data">Male</td>
+<td class="data">Karthik</td>
+<td class="data">Joshi</td>
+<td class="r data">29</td>
+<td class="data">30.01.1997</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">Post Graduate</td>
+<td class="data">Self-Employed</td>
+<td class="r data">676000</td>
+<td class="r data">682</td>
+<td class="data">Own</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Madurai</td>
+<td class="data">10.09.2019</td>
+<td class="data">karthik.joshi0436@example.com</td>
+<td class="r data">9807436292</td>
+<td class="data">CUST00436</td>
+<td class="data">Male</td>
+<td class="r data">30JAN1997</td>
+<td class="r data">10SEP2019</td>
+<td class="r data">29</td>
+<td class="r data">29</td>
+<td class="data">Valid</td>
+<td class="data">Madurai</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">karthik.joshi0436@example.com</td>
+<td class="data">9807436292</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">CUST00436</td>
+<td class="data">Male</td>
+<td class="data">Karthik</td>
+<td class="data">Joshi</td>
+<td class="r data">29</td>
+<td class="data">30.01.1997</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">Post Graduate</td>
+<td class="data">Self-Employed</td>
+<td class="r data">676000</td>
+<td class="r data">682</td>
+<td class="data">Own</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Madurai</td>
+<td class="data">10.09.2019</td>
+<td class="data">karthik.joshi0436@example.com</td>
+<td class="r data">9807436292</td>
+<td class="data">CUST00436</td>
+<td class="data">Male</td>
+<td class="r data">30JAN1997</td>
+<td class="r data">10SEP2019</td>
+<td class="r data">29</td>
+<td class="r data">29</td>
+<td class="data">Valid</td>
+<td class="data">Madurai</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">karthik.joshi0436@example.com</td>
+<td class="data">9807436292</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">CUST00558</td>
+<td class="data">Male</td>
+<td class="data">Rahul</td>
+<td class="data">Gowda</td>
+<td class="r data">34</td>
+<td class="data">1991-11-08</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Professional</td>
+<td class="data">Salaried</td>
+<td class="r data">455000</td>
+<td class="r data">607</td>
+<td class="data">Own</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Jodhpur</td>
+<td class="data">05/04/2010</td>
+<td class="data">rahul.gowda0558@example.com</td>
+<td class="r data">9387292821</td>
+<td class="data">CUST00558</td>
+<td class="data">Male</td>
+<td class="r data">08NOV1991</td>
+<td class="r data">05APR2010</td>
+<td class="r data">34</td>
+<td class="r data">34</td>
+<td class="data">Valid</td>
+<td class="data">Jodhpur</td>
+<td class="data">Rajasthan</td>
+<td class="data">rahul.gowda0558@example.com</td>
+<td class="data">9387292821</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">20</th>
+<td class="data">CUST00558</td>
+<td class="data">Male</td>
+<td class="data">Rahul</td>
+<td class="data">Gowda</td>
+<td class="r data">34</td>
+<td class="data">1991-11-08</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Professional</td>
+<td class="data">Salaried</td>
+<td class="r data">455000</td>
+<td class="r data">607</td>
+<td class="data">Own</td>
+<td class="data">Rajasthan</td>
+<td class="data">North</td>
+<td class="data">Jodhpur</td>
+<td class="data">05/04/2010</td>
+<td class="data">rahul.gowda0558@example.com</td>
+<td class="r data">9387292821</td>
+<td class="data">CUST00558</td>
+<td class="data">Male</td>
+<td class="r data">08NOV1991</td>
+<td class="r data">05APR2010</td>
+<td class="r data">34</td>
+<td class="r data">34</td>
+<td class="data">Valid</td>
+<td class="data">Jodhpur</td>
+<td class="data">Rajasthan</td>
+<td class="data">rahul.gowda0558@example.com</td>
+<td class="data">9387292821</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">21</th>
+<td class="data">CUST00611</td>
+<td class="data">male</td>
+<td class="data">Ramesh</td>
+<td class="data">Subramanian</td>
+<td class="r data">50</td>
+<td class="data">1976-06-10</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Business Owner</td>
+<td class="r data">516000</td>
+<td class="r data">604</td>
+<td class="data">Own</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Salem</td>
+<td class="data">19.10.2018</td>
+<td class="data">ramesh.subramanian0611@example.com</td>
+<td class="r data">9969643402</td>
+<td class="data">CUST00611</td>
+<td class="data">Male</td>
+<td class="r data">10JUN1976</td>
+<td class="r data">19OCT2018</td>
+<td class="r data">50</td>
+<td class="r data">50</td>
+<td class="data">Valid</td>
+<td class="data">Salem</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">ramesh.subramanian0611@example.com</td>
+<td class="data">9969643402</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">22</th>
+<td class="data">CUST00611</td>
+<td class="data">male</td>
+<td class="data">Ramesh</td>
+<td class="data">Subramanian</td>
+<td class="r data">50</td>
+<td class="data">1976-06-10</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Business Owner</td>
+<td class="r data">516000</td>
+<td class="r data">604</td>
+<td class="data">Own</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Salem</td>
+<td class="data">19.10.2018</td>
+<td class="data">ramesh.subramanian0611@example.com</td>
+<td class="r data">9969643402</td>
+<td class="data">CUST00611</td>
+<td class="data">Male</td>
+<td class="r data">10JUN1976</td>
+<td class="r data">19OCT2018</td>
+<td class="r data">50</td>
+<td class="r data">50</td>
+<td class="data">Valid</td>
+<td class="data">Salem</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">ramesh.subramanian0611@example.com</td>
+<td class="data">9969643402</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">23</th>
+<td class="data">CUST00631</td>
+<td class="data">Female</td>
+<td class="data">Nisha</td>
+<td class="data">Kumar</td>
+<td class="r data">48</td>
+<td class="data">1978-06-02</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">High School</td>
+<td class="data">Self-Employed</td>
+<td class="r data">447000</td>
+<td class="r data">607</td>
+<td class="data">Rent</td>
+<td class="data">Telangana</td>
+<td class="data">South</td>
+<td class="data">Hyderabad</td>
+<td class="data">19-Jan-2018</td>
+<td class="data">nisha.kumar0631@example.com</td>
+<td class="r data">9801696696</td>
+<td class="data">CUST00631</td>
+<td class="data">Female</td>
+<td class="r data">02JUN1978</td>
+<td class="r data">19JAN2018</td>
+<td class="r data">48</td>
+<td class="r data">48</td>
+<td class="data">Valid</td>
+<td class="data">Hyderabad</td>
+<td class="data">Telangana</td>
+<td class="data">nisha.kumar0631@example.com</td>
+<td class="data">9801696696</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">24</th>
+<td class="data">CUST00631</td>
+<td class="data">Female</td>
+<td class="data">Nisha</td>
+<td class="data">Kumar</td>
+<td class="r data">48</td>
+<td class="data">1978-06-02</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">High School</td>
+<td class="data">Self-Employed</td>
+<td class="r data">447000</td>
+<td class="r data">607</td>
+<td class="data">Rent</td>
+<td class="data">Telangana</td>
+<td class="data">South</td>
+<td class="data">Hyderabad</td>
+<td class="data">19-Jan-2018</td>
+<td class="data">nisha.kumar0631@example.com</td>
+<td class="r data">9801696696</td>
+<td class="data">CUST00631</td>
+<td class="data">Female</td>
+<td class="r data">02JUN1978</td>
+<td class="r data">19JAN2018</td>
+<td class="r data">48</td>
+<td class="r data">48</td>
+<td class="data">Valid</td>
+<td class="data">Hyderabad</td>
+<td class="data">Telangana</td>
+<td class="data">nisha.kumar0631@example.com</td>
+<td class="data">9801696696</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">25</th>
+<td class="data">CUST00702</td>
+<td class="data">male</td>
+<td class="data">Suresh</td>
+<td class="data">Banerjee</td>
+<td class="r data">23</td>
+<td class="data">25/09/2003</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">High School</td>
+<td class="data">Retired</td>
+<td class="r data">363000</td>
+<td class="r data">510</td>
+<td class="data">Rent</td>
+<td class="data">Odisha</td>
+<td class="data">East</td>
+<td class="data">Cuttack</td>
+<td class="data">23.01.2022</td>
+<td class="data"> &#160;</td>
+<td class="r data">9301909383</td>
+<td class="data">CUST00702</td>
+<td class="data">Male</td>
+<td class="r data">25SEP2003</td>
+<td class="r data">23JAN2022</td>
+<td class="r data">23</td>
+<td class="r data">23</td>
+<td class="data">Valid</td>
+<td class="data">Cuttack</td>
+<td class="data">Odisha</td>
+<td class="data"> &#160;</td>
+<td class="data">9301909383</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">26</th>
+<td class="data">CUST00702</td>
+<td class="data">male</td>
+<td class="data">Suresh</td>
+<td class="data">Banerjee</td>
+<td class="r data">23</td>
+<td class="data">25/09/2003</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">High School</td>
+<td class="data">Retired</td>
+<td class="r data">363000</td>
+<td class="r data">510</td>
+<td class="data">Rent</td>
+<td class="data">Odisha</td>
+<td class="data">East</td>
+<td class="data">Cuttack</td>
+<td class="data">23.01.2022</td>
+<td class="data"> &#160;</td>
+<td class="r data">9301909383</td>
+<td class="data">CUST00702</td>
+<td class="data">Male</td>
+<td class="r data">25SEP2003</td>
+<td class="r data">23JAN2022</td>
+<td class="r data">23</td>
+<td class="r data">23</td>
+<td class="data">Valid</td>
+<td class="data">Cuttack</td>
+<td class="data">Odisha</td>
+<td class="data"> &#160;</td>
+<td class="data">9301909383</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">27</th>
+<td class="data">CUST00711</td>
+<td class="data">female</td>
+<td class="data">Kavya</td>
+<td class="data">Shah</td>
+<td class="r data">21</td>
+<td class="data">15/04/2005</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">High School</td>
+<td class="data">Unemployed</td>
+<td class="r data">237000</td>
+<td class="r data">555</td>
+<td class="data">Rent</td>
+<td class="data">West Bengal</td>
+<td class="data">East</td>
+<td class="data">Durgapur</td>
+<td class="data">2010-12-22</td>
+<td class="data">kavya.shah0711@example.com</td>
+<td class="r data">9525116543</td>
+<td class="data">CUST00711</td>
+<td class="data">Female</td>
+<td class="r data">15APR2005</td>
+<td class="r data">22DEC2010</td>
+<td class="r data">21</td>
+<td class="r data">21</td>
+<td class="data">Valid</td>
+<td class="data">Durgapur</td>
+<td class="data">West Bengal</td>
+<td class="data">kavya.shah0711@example.com</td>
+<td class="data">9525116543</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">28</th>
+<td class="data">CUST00711</td>
+<td class="data">female</td>
+<td class="data">Kavya</td>
+<td class="data">Shah</td>
+<td class="r data">21</td>
+<td class="data">15/04/2005</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">High School</td>
+<td class="data">Unemployed</td>
+<td class="r data">237000</td>
+<td class="r data">555</td>
+<td class="data">Rent</td>
+<td class="data">West Bengal</td>
+<td class="data">East</td>
+<td class="data">Durgapur</td>
+<td class="data">2010-12-22</td>
+<td class="data">kavya.shah0711@example.com</td>
+<td class="r data">9525116543</td>
+<td class="data">CUST00711</td>
+<td class="data">Female</td>
+<td class="r data">15APR2005</td>
+<td class="r data">22DEC2010</td>
+<td class="r data">21</td>
+<td class="r data">21</td>
+<td class="data">Valid</td>
+<td class="data">Durgapur</td>
+<td class="data">West Bengal</td>
+<td class="data">kavya.shah0711@example.com</td>
+<td class="data">9525116543</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">29</th>
+<td class="data">CUST00746</td>
+<td class="data">Male</td>
+<td class="data">Naveen</td>
+<td class="data">Bose</td>
+<td class="r data">42</td>
+<td class="data">1984-08-13</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">High School</td>
+<td class="data">Self-Employed</td>
+<td class="r data">1306000</td>
+<td class="r data">601</td>
+<td class="data">Family</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Chennai</td>
+<td class="data">2010-09-04</td>
+<td class="data">naveen.bose0746@example.com</td>
+<td class="r data">9978305722</td>
+<td class="data">CUST00746</td>
+<td class="data">Male</td>
+<td class="r data">13AUG1984</td>
+<td class="r data">04SEP2010</td>
+<td class="r data">42</td>
+<td class="r data">42</td>
+<td class="data">Valid</td>
+<td class="data">Chennai</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">naveen.bose0746@example.com</td>
+<td class="data">9978305722</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">30</th>
+<td class="data">CUST00746</td>
+<td class="data">Male</td>
+<td class="data">Naveen</td>
+<td class="data">Bose</td>
+<td class="r data">42</td>
+<td class="data">1984-08-13</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">High School</td>
+<td class="data">Self-Employed</td>
+<td class="r data">1306000</td>
+<td class="r data">601</td>
+<td class="data">Family</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">South</td>
+<td class="data">Chennai</td>
+<td class="data">2010-09-04</td>
+<td class="data">naveen.bose0746@example.com</td>
+<td class="r data">9978305722</td>
+<td class="data">CUST00746</td>
+<td class="data">Male</td>
+<td class="r data">13AUG1984</td>
+<td class="r data">04SEP2010</td>
+<td class="r data">42</td>
+<td class="r data">42</td>
+<td class="data">Valid</td>
+<td class="data">Chennai</td>
+<td class="data">Tamil Nadu</td>
+<td class="data">naveen.bose0746@example.com</td>
+<td class="data">9978305722</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">31</th>
+<td class="data">CUST00762</td>
+<td class="data">Male</td>
+<td class="data">Naveen</td>
+<td class="data">Joshi</td>
+<td class="r data">40</td>
+<td class="data">19/08/1986</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">Graduate</td>
+<td class="data">Business Owner</td>
+<td class="r data">474000</td>
+<td class="r data">699</td>
+<td class="data">Own</td>
+<td class="data">MH</td>
+<td class="data">West</td>
+<td class="data">Pune</td>
+<td class="data">26/10/2019</td>
+<td class="data"> &#160;</td>
+<td class="r data">9628751005</td>
+<td class="data">CUST00762</td>
+<td class="data">Male</td>
+<td class="r data">19AUG1986</td>
+<td class="r data">26OCT2019</td>
+<td class="r data">40</td>
+<td class="r data">40</td>
+<td class="data">Valid</td>
+<td class="data">Pune</td>
+<td class="data">Mh</td>
+<td class="data"> &#160;</td>
+<td class="data">9628751005</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">32</th>
+<td class="data">CUST00762</td>
+<td class="data">Male</td>
+<td class="data">Naveen</td>
+<td class="data">Joshi</td>
+<td class="r data">40</td>
+<td class="data">19/08/1986</td>
+<td class="data">Married</td>
+<td class="r data">4</td>
+<td class="data">Graduate</td>
+<td class="data">Business Owner</td>
+<td class="r data">474000</td>
+<td class="r data">699</td>
+<td class="data">Own</td>
+<td class="data">MH</td>
+<td class="data">West</td>
+<td class="data">Pune</td>
+<td class="data">26/10/2019</td>
+<td class="data"> &#160;</td>
+<td class="r data">9628751005</td>
+<td class="data">CUST00762</td>
+<td class="data">Male</td>
+<td class="r data">19AUG1986</td>
+<td class="r data">26OCT2019</td>
+<td class="r data">40</td>
+<td class="r data">40</td>
+<td class="data">Valid</td>
+<td class="data">Pune</td>
+<td class="data">Mh</td>
+<td class="data"> &#160;</td>
+<td class="data">9628751005</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">33</th>
+<td class="data">CUST00774</td>
+<td class="data">F</td>
+<td class="data">Pooja</td>
+<td class="data">Singh</td>
+<td class="r data">58</td>
+<td class="data">19/09/1968</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Professional</td>
+<td class="data">Salaried</td>
+<td class="r data">459000</td>
+<td class="r data">594</td>
+<td class="data">Family</td>
+<td class="data">West Bengal</td>
+<td class="data">East</td>
+<td class="data">Howrah</td>
+<td class="data">05-Jan-2022</td>
+<td class="data">pooja.singh0774@example.com</td>
+<td class="r data">9476892275</td>
+<td class="data">CUST00774</td>
+<td class="data">Female</td>
+<td class="r data">19SEP1968</td>
+<td class="r data">05JAN2022</td>
+<td class="r data">58</td>
+<td class="r data">58</td>
+<td class="data">Valid</td>
+<td class="data">Howrah</td>
+<td class="data">West Bengal</td>
+<td class="data">pooja.singh0774@example.com</td>
+<td class="data">9476892275</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">34</th>
+<td class="data">CUST00774</td>
+<td class="data">F</td>
+<td class="data">Pooja</td>
+<td class="data">Singh</td>
+<td class="r data">58</td>
+<td class="data">19/09/1968</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Professional</td>
+<td class="data">Salaried</td>
+<td class="r data">459000</td>
+<td class="r data">594</td>
+<td class="data">Family</td>
+<td class="data">West Bengal</td>
+<td class="data">East</td>
+<td class="data">Howrah</td>
+<td class="data">05-Jan-2022</td>
+<td class="data">pooja.singh0774@example.com</td>
+<td class="r data">9476892275</td>
+<td class="data">CUST00774</td>
+<td class="data">Female</td>
+<td class="r data">19SEP1968</td>
+<td class="r data">05JAN2022</td>
+<td class="r data">58</td>
+<td class="r data">58</td>
+<td class="data">Valid</td>
+<td class="data">Howrah</td>
+<td class="data">West Bengal</td>
+<td class="data">pooja.singh0774@example.com</td>
+<td class="data">9476892275</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">35</th>
+<td class="data">CUST00814</td>
+<td class="data">Female</td>
+<td class="data">Ritu</td>
+<td class="data">Bose</td>
+<td class="r data">40</td>
+<td class="data">05/12/1985</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">374000</td>
+<td class="r data">.</td>
+<td class="data">Rent</td>
+<td class="data">Delhi</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">2016-11-08</td>
+<td class="data">ritu.bose0814@example.com</td>
+<td class="r data">9409346518</td>
+<td class="data">CUST00814</td>
+<td class="data">Female</td>
+<td class="r data">05DEC1985</td>
+<td class="r data">08NOV2016</td>
+<td class="r data">40</td>
+<td class="r data">40</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Delhi</td>
+<td class="data">ritu.bose0814@example.com</td>
+<td class="data">9409346518</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">36</th>
+<td class="data">CUST00814</td>
+<td class="data">Female</td>
+<td class="data">Ritu</td>
+<td class="data">Bose</td>
+<td class="r data">40</td>
+<td class="data">05/12/1985</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">374000</td>
+<td class="r data">.</td>
+<td class="data">Rent</td>
+<td class="data">Delhi</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">2016-11-08</td>
+<td class="data">ritu.bose0814@example.com</td>
+<td class="r data">9409346518</td>
+<td class="data">CUST00814</td>
+<td class="data">Female</td>
+<td class="r data">05DEC1985</td>
+<td class="r data">08NOV2016</td>
+<td class="r data">40</td>
+<td class="r data">40</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Delhi</td>
+<td class="data">ritu.bose0814@example.com</td>
+<td class="data">9409346518</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">37</th>
+<td class="data">CUST00871</td>
+<td class="data">Female</td>
+<td class="data">Priya</td>
+<td class="data">Verma</td>
+<td class="r data">21</td>
+<td class="data">2005-03-30</td>
+<td class="data">Married</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">1520000</td>
+<td class="r data">570</td>
+<td class="data">Own</td>
+<td class="data">Delhi</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">07-Jul-2021</td>
+<td class="data">priya.verma0871@example.com</td>
+<td class="r data">9901174162</td>
+<td class="data">CUST00871</td>
+<td class="data">Female</td>
+<td class="r data">30MAR2005</td>
+<td class="r data">07JUL2021</td>
+<td class="r data">21</td>
+<td class="r data">21</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Delhi</td>
+<td class="data">priya.verma0871@example.com</td>
+<td class="data">9901174162</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">38</th>
+<td class="data">CUST00871</td>
+<td class="data">Female</td>
+<td class="data">Priya</td>
+<td class="data">Verma</td>
+<td class="r data">21</td>
+<td class="data">2005-03-30</td>
+<td class="data">Married</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">1520000</td>
+<td class="r data">570</td>
+<td class="data">Own</td>
+<td class="data">Delhi</td>
+<td class="data">North</td>
+<td class="data">New Delhi</td>
+<td class="data">07-Jul-2021</td>
+<td class="data">priya.verma0871@example.com</td>
+<td class="r data">9901174162</td>
+<td class="data">CUST00871</td>
+<td class="data">Female</td>
+<td class="r data">30MAR2005</td>
+<td class="r data">07JUL2021</td>
+<td class="r data">21</td>
+<td class="r data">21</td>
+<td class="data">Valid</td>
+<td class="data">New Delhi</td>
+<td class="data">Delhi</td>
+<td class="data">priya.verma0871@example.com</td>
+<td class="data">9901174162</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">39</th>
+<td class="data">CUST00997</td>
+<td class="data">female</td>
+<td class="data">Kavya</td>
+<td class="data">Nair</td>
+<td class="r data">37</td>
+<td class="data">1989-08-29</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">High School</td>
+<td class="data">Salaried</td>
+<td class="r data">1173000</td>
+<td class="r data">573</td>
+<td class="data">Own</td>
+<td class="data">Maharashtra</td>
+<td class="data">West</td>
+<td class="data">Mumbai</td>
+<td class="data">2019-10-16</td>
+<td class="data">kavya.nair0997@example.com</td>
+<td class="r data">9861941544</td>
+<td class="data">CUST00997</td>
+<td class="data">Female</td>
+<td class="r data">29AUG1989</td>
+<td class="r data">16OCT2019</td>
+<td class="r data">37</td>
+<td class="r data">37</td>
+<td class="data">Valid</td>
+<td class="data">Mumbai</td>
+<td class="data">Maharashtra</td>
+<td class="data">kavya.nair0997@example.com</td>
+<td class="data">9861941544</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">40</th>
+<td class="data">CUST00997</td>
+<td class="data">female</td>
+<td class="data">Kavya</td>
+<td class="data">Nair</td>
+<td class="r data">37</td>
+<td class="data">1989-08-29</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">High School</td>
+<td class="data">Salaried</td>
+<td class="r data">1173000</td>
+<td class="r data">573</td>
+<td class="data">Own</td>
+<td class="data">Maharashtra</td>
+<td class="data">West</td>
+<td class="data">Mumbai</td>
+<td class="data">2019-10-16</td>
+<td class="data">kavya.nair0997@example.com</td>
+<td class="r data">9861941544</td>
+<td class="data">CUST00997</td>
+<td class="data">Female</td>
+<td class="r data">29AUG1989</td>
+<td class="r data">16OCT2019</td>
+<td class="r data">37</td>
+<td class="r data">37</td>
+<td class="data">Valid</td>
+<td class="data">Mumbai</td>
+<td class="data">Maharashtra</td>
+<td class="data">kavya.nair0997@example.com</td>
+<td class="data">9861941544</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">41</th>
+<td class="data">CUST01051</td>
+<td class="data">Female</td>
+<td class="data">Priya</td>
+<td class="data">Reddy</td>
+<td class="r data">27</td>
+<td class="data">1998-10-14</td>
+<td class="data">Married</td>
+<td class="r data">3</td>
+<td class="data">High School</td>
+<td class="data">Retired</td>
+<td class="r data">442000</td>
+<td class="r data">702</td>
+<td class="data">Rent</td>
+<td class="data">Kerala</td>
+<td class="data">South</td>
+<td class="data">Thiruvananthapuram</td>
+<td class="data">2013-06-21</td>
+<td class="data">priya.reddy1051@example.com</td>
+<td class="r data">9373508560</td>
+<td class="data">CUST01051</td>
+<td class="data">Female</td>
+<td class="r data">14OCT1998</td>
+<td class="r data">21JUN2013</td>
+<td class="r data">27</td>
+<td class="r data">27</td>
+<td class="data">Valid</td>
+<td class="data">Thiruvananthapuram</td>
+<td class="data">Kerala</td>
+<td class="data">priya.reddy1051@example.com</td>
+<td class="data">9373508560</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">42</th>
+<td class="data">CUST01051</td>
+<td class="data">Female</td>
+<td class="data">Priya</td>
+<td class="data">Reddy</td>
+<td class="r data">27</td>
+<td class="data">1998-10-14</td>
+<td class="data">Married</td>
+<td class="r data">3</td>
+<td class="data">High School</td>
+<td class="data">Retired</td>
+<td class="r data">442000</td>
+<td class="r data">702</td>
+<td class="data">Rent</td>
+<td class="data">Kerala</td>
+<td class="data">South</td>
+<td class="data">Thiruvananthapuram</td>
+<td class="data">2013-06-21</td>
+<td class="data">priya.reddy1051@example.com</td>
+<td class="r data">9373508560</td>
+<td class="data">CUST01051</td>
+<td class="data">Female</td>
+<td class="r data">14OCT1998</td>
+<td class="r data">21JUN2013</td>
+<td class="r data">27</td>
+<td class="r data">27</td>
+<td class="data">Valid</td>
+<td class="data">Thiruvananthapuram</td>
+<td class="data">Kerala</td>
+<td class="data">priya.reddy1051@example.com</td>
+<td class="data">9373508560</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">43</th>
+<td class="data">CUST01079</td>
+<td class="data">Female</td>
+<td class="data">Divya</td>
+<td class="data">Yadav</td>
+<td class="r data">45</td>
+<td class="data">19/04/1981</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">High School</td>
+<td class="data">Business Owner</td>
+<td class="r data">1921000</td>
+<td class="r data">667</td>
+<td class="data">Family</td>
+<td class="data">Maharashtra</td>
+<td class="data">West</td>
+<td class="data">Pune</td>
+<td class="data">12/05/2013</td>
+<td class="data">divya.yadav1079@example.com</td>
+<td class="r data">9785075588</td>
+<td class="data">CUST01079</td>
+<td class="data">Female</td>
+<td class="r data">19APR1981</td>
+<td class="r data">12MAY2013</td>
+<td class="r data">45</td>
+<td class="r data">45</td>
+<td class="data">Valid</td>
+<td class="data">Pune</td>
+<td class="data">Maharashtra</td>
+<td class="data">divya.yadav1079@example.com</td>
+<td class="data">9785075588</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">44</th>
+<td class="data">CUST01079</td>
+<td class="data">Female</td>
+<td class="data">Divya</td>
+<td class="data">Yadav</td>
+<td class="r data">45</td>
+<td class="data">19/04/1981</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">High School</td>
+<td class="data">Business Owner</td>
+<td class="r data">1921000</td>
+<td class="r data">667</td>
+<td class="data">Family</td>
+<td class="data">Maharashtra</td>
+<td class="data">West</td>
+<td class="data">Pune</td>
+<td class="data">12/05/2013</td>
+<td class="data">divya.yadav1079@example.com</td>
+<td class="r data">9785075588</td>
+<td class="data">CUST01079</td>
+<td class="data">Female</td>
+<td class="r data">19APR1981</td>
+<td class="r data">12MAY2013</td>
+<td class="r data">45</td>
+<td class="r data">45</td>
+<td class="data">Valid</td>
+<td class="data">Pune</td>
+<td class="data">Maharashtra</td>
+<td class="data">divya.yadav1079@example.com</td>
+<td class="data">9785075588</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">45</th>
+<td class="data">CUST01099</td>
+<td class="data">FEMALE</td>
+<td class="data">Swathi</td>
+<td class="data">Yadav</td>
+<td class="r data">57</td>
+<td class="data">1969-01-21</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Professional</td>
+<td class="data">Self-Employed</td>
+<td class="r data">2115000</td>
+<td class="r data">742</td>
+<td class="data">Family</td>
+<td class="data">Maharashtra</td>
+<td class="data">West</td>
+<td class="data">Nagpur</td>
+<td class="data">07.06.2014</td>
+<td class="data">swathi.yadav1099@example.com</td>
+<td class="r data">9163517915</td>
+<td class="data">CUST01099</td>
+<td class="data">Female</td>
+<td class="r data">21JAN1969</td>
+<td class="r data">07JUN2014</td>
+<td class="r data">57</td>
+<td class="r data">57</td>
+<td class="data">Valid</td>
+<td class="data">Nagpur</td>
+<td class="data">Maharashtra</td>
+<td class="data">swathi.yadav1099@example.com</td>
+<td class="data">9163517915</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">46</th>
+<td class="data">CUST01099</td>
+<td class="data">FEMALE</td>
+<td class="data">Swathi</td>
+<td class="data">Yadav</td>
+<td class="r data">57</td>
+<td class="data">1969-01-21</td>
+<td class="data">Married</td>
+<td class="r data">2</td>
+<td class="data">Professional</td>
+<td class="data">Self-Employed</td>
+<td class="r data">2115000</td>
+<td class="r data">742</td>
+<td class="data">Family</td>
+<td class="data">Maharashtra</td>
+<td class="data">West</td>
+<td class="data">Nagpur</td>
+<td class="data">07.06.2014</td>
+<td class="data">swathi.yadav1099@example.com</td>
+<td class="r data">9163517915</td>
+<td class="data">CUST01099</td>
+<td class="data">Female</td>
+<td class="r data">21JAN1969</td>
+<td class="r data">07JUN2014</td>
+<td class="r data">57</td>
+<td class="r data">57</td>
+<td class="data">Valid</td>
+<td class="data">Nagpur</td>
+<td class="data">Maharashtra</td>
+<td class="data">swathi.yadav1099@example.com</td>
+<td class="data">9163517915</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">47</th>
+<td class="data">CUST01165</td>
+<td class="data">Male</td>
+<td class="data">Harish</td>
+<td class="data">Naidu</td>
+<td class="r data">43</td>
+<td class="data">1983-05-29</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Post Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">1167000</td>
+<td class="r data">779</td>
+<td class="data">Family</td>
+<td class="data">Uttar Pradesh</td>
+<td class="data">North</td>
+<td class="data">Varanasi</td>
+<td class="data">2023-06-25</td>
+<td class="data">harish.naidu1165@example.com</td>
+<td class="r data">9929802428</td>
+<td class="data">CUST01165</td>
+<td class="data">Male</td>
+<td class="r data">29MAY1983</td>
+<td class="r data">25JUN2023</td>
+<td class="r data">43</td>
+<td class="r data">43</td>
+<td class="data">Valid</td>
+<td class="data">Varanasi</td>
+<td class="data">Uttar Pradesh</td>
+<td class="data">harish.naidu1165@example.com</td>
+<td class="data">9929802428</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">48</th>
+<td class="data">CUST01165</td>
+<td class="data">Male</td>
+<td class="data">Harish</td>
+<td class="data">Naidu</td>
+<td class="r data">43</td>
+<td class="data">1983-05-29</td>
+<td class="data">Married</td>
+<td class="r data">1</td>
+<td class="data">Post Graduate</td>
+<td class="data">Salaried</td>
+<td class="r data">1167000</td>
+<td class="r data">779</td>
+<td class="data">Family</td>
+<td class="data">Uttar Pradesh</td>
+<td class="data">North</td>
+<td class="data">Varanasi</td>
+<td class="data">2023-06-25</td>
+<td class="data">harish.naidu1165@example.com</td>
+<td class="r data">9929802428</td>
+<td class="data">CUST01165</td>
+<td class="data">Male</td>
+<td class="r data">29MAY1983</td>
+<td class="r data">25JUN2023</td>
+<td class="r data">43</td>
+<td class="r data">43</td>
+<td class="data">Valid</td>
+<td class="data">Varanasi</td>
+<td class="data">Uttar Pradesh</td>
+<td class="data">harish.naidu1165@example.com</td>
+<td class="data">9929802428</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">49</th>
+<td class="data">CUST01170</td>
+<td class="data">Male</td>
+<td class="data">Deepak</td>
+<td class="data">Das</td>
+<td class="r data">58</td>
+<td class="data">1967-10-29</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Self-Employed</td>
+<td class="r data">469000</td>
+<td class="r data">571</td>
+<td class="data">Own</td>
+<td class="data">Gujarat</td>
+<td class="data">West</td>
+<td class="data">Surat</td>
+<td class="data">23-Mar-2020</td>
+<td class="data">deepak.das1170@example.com</td>
+<td class="r data">9412645145</td>
+<td class="data">CUST01170</td>
+<td class="data">Male</td>
+<td class="r data">29OCT1967</td>
+<td class="r data">23MAR2020</td>
+<td class="r data">58</td>
+<td class="r data">58</td>
+<td class="data">Valid</td>
+<td class="data">Surat</td>
+<td class="data">Gujarat</td>
+<td class="data">deepak.das1170@example.com</td>
+<td class="data">9412645145</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">50</th>
+<td class="data">CUST01170</td>
+<td class="data">Male</td>
+<td class="data">Deepak</td>
+<td class="data">Das</td>
+<td class="r data">58</td>
+<td class="data">1967-10-29</td>
+<td class="data">Single</td>
+<td class="r data">0</td>
+<td class="data">Graduate</td>
+<td class="data">Self-Employed</td>
+<td class="r data">469000</td>
+<td class="r data">571</td>
+<td class="data">Own</td>
+<td class="data">Gujarat</td>
+<td class="data">West</td>
+<td class="data">Surat</td>
+<td class="data">23-Mar-2020</td>
+<td class="data">deepak.das1170@example.com</td>
+<td class="r data">9412645145</td>
+<td class="data">CUST01170</td>
+<td class="data">Male</td>
+<td class="r data">29OCT1967</td>
+<td class="r data">23MAR2020</td>
+<td class="r data">58</td>
+<td class="r data">58</td>
+<td class="data">Valid</td>
+<td class="data">Surat</td>
+<td class="data">Gujarat</td>
+<td class="data">deepak.das1170@example.com</td>
+<td class="data">9412645145</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX3" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Clean_Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">4060</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<article id="IDX4" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Unique_Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">4000</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<article id="IDX5" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Exact_Duplicate_Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">60</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX6" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Total_Rows</th>
+<th class="r b header" scope="col">Unique_Customer_IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">4000</td>
+<td class="r data">4000</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX7" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Total_Customer_Rows</th>
+<th class="r b header" scope="col">Unique_Customer_IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">4000</td>
+<td class="r data">4000</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Contents" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX8" class="proc_title_group">
+<p class="c proctitle">The CONTENTS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Contents Procedure</h1>
+<section>
+<h1 class="contentfolder toc">PROJECT.CUSTOMERS_CLEAN</h1>
+<article aria-label="Attributes">
+<h1 class="contentitem toc">Attributes</h1>
+<table class="table" style="border-spacing: 0" aria-label="Attributes">
+<caption aria-label="Attributes"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Name</th>
+<td class="data">PROJECT.CUSTOMERS_CLEAN</td>
+<th class="rowheader" scope="row">Observations</th>
+<td class="data">4000</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Member Type</th>
+<td class="data">DATA</td>
+<th class="rowheader" scope="row">Variables</th>
+<td class="data">32</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Engine</th>
+<td class="data">V9</td>
+<th class="rowheader" scope="row">Indexes</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Created</th>
+<td class="data">10/23/2026 21:43:19</td>
+<th class="rowheader" scope="row">Observation Length</th>
+<td class="data">384</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Last Modified</th>
+<td class="data">10/23/2026 21:43:19</td>
+<th class="rowheader" scope="row">Deleted Observations</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Protection</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Compressed</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Set Type</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">Sorted</th>
+<td class="data">NO</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Label</th>
+<td class="data">&#160;</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Data Representation</th>
+<td class="data">SOLARIS_X86_64, LINUX_X86_64, ALPHA_TRU64, LINUX_IA64</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Encoding</th>
+<td class="data">utf-8  Unicode (UTF-8)</td>
+<th class="rowheader" scope="row">&#160;</th>
+<td class="data">&#160;</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX9" aria-label="Engine/Host Information">
+<h1 class="contentitem toc">Engine/Host Information</h1>
+<table class="table" style="border-spacing: 0" aria-label="Engine/Host Information">
+<caption aria-label="Engine/Host Information"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Engine/Host Dependent Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Data Set Page Size</th>
+<td class="data">131072</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Pages</th>
+<td class="data">12</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">First Data Page</th>
+<td class="data">1</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Max Obs per Page</th>
+<td class="data">341</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Obs in First Data Page</th>
+<td class="data">325</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Data Set Repairs</th>
+<td class="data">0</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Filename</th>
+<td class="data">/home/u64620803/Bank_credit_risk_analytics/customers_clean.sas7bdat</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Release Created</th>
+<td class="data">9.0401M8</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Host Created</th>
+<td class="data">Linux</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Inode Number</th>
+<td class="data">6443731280</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Access Permission</th>
+<td class="data">rw-r--r--</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Owner Name</th>
+<td class="data">u64620803</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size</th>
+<td class="data">2MB</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">File Size (bytes)</th>
+<td class="data">1703936</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX10" aria-label="Variables">
+<h1 class="contentitem toc">Variables</h1>
+<table class="table" style="border-spacing: 0" aria-label="Variables">
+<caption aria-label="Variables"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="6" scope="colgroup">Alphabetic List of Variables and Attributes</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">#</th>
+<th class="b header" scope="col">Variable</th>
+<th class="b header" scope="col">Type</th>
+<th class="r b header" scope="col">Len</th>
+<th class="b header" scope="col">Format</th>
+<th class="b header" scope="col">Informat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">age</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">25</th>
+<td class="data">age_clean</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">24</th>
+<td class="data">age_original</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">26</th>
+<td class="data">age_quality_flag</td>
+<td class="data">Char</td>
+<td class="r data">12</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">annual_income</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">city</td>
+<td class="data">Char</td>
+<td class="r data">18</td>
+<td class="data">$18.</td>
+<td class="data">$18.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">27</th>
+<td class="data">city_clean</td>
+<td class="data">Char</td>
+<td class="r data">18</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">credit_score</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">32</th>
+<td class="data">credit_score_quality_flag</td>
+<td class="data">Char</td>
+<td class="r data">12</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">customer_id</td>
+<td class="data">Char</td>
+<td class="r data">9</td>
+<td class="data">$9.</td>
+<td class="data">$9.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">20</th>
+<td class="data">customer_id_clean</td>
+<td class="data">Char</td>
+<td class="r data">9</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">customer_since</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">23</th>
+<td class="data">customer_since_date</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">DATE9.</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">date_of_birth</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">dependents</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">22</th>
+<td class="data">dob_date</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">DATE9.</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">education</td>
+<td class="data">Char</td>
+<td class="r data">13</td>
+<td class="data">$13.</td>
+<td class="data">$13.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">email</td>
+<td class="data">Char</td>
+<td class="r data">35</td>
+<td class="data">$35.</td>
+<td class="data">$35.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">29</th>
+<td class="data">email_clean</td>
+<td class="data">Char</td>
+<td class="r data">35</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">employment_status</td>
+<td class="data">Char</td>
+<td class="r data">14</td>
+<td class="data">$14.</td>
+<td class="data">$14.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">first_name</td>
+<td class="data">Char</td>
+<td class="r data">7</td>
+<td class="data">$7.</td>
+<td class="data">$7.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">gender</td>
+<td class="data">Char</td>
+<td class="r data">6</td>
+<td class="data">$6.</td>
+<td class="data">$6.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">21</th>
+<td class="data">gender_clean</td>
+<td class="data">Char</td>
+<td class="r data">10</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">home_ownership</td>
+<td class="data">Char</td>
+<td class="r data">6</td>
+<td class="data">$6.</td>
+<td class="data">$6.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">31</th>
+<td class="data">income_quality_flag</td>
+<td class="data">Char</td>
+<td class="r data">12</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">last_name</td>
+<td class="data">Char</td>
+<td class="r data">11</td>
+<td class="data">$11.</td>
+<td class="data">$11.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">marital_status</td>
+<td class="data">Char</td>
+<td class="r data">8</td>
+<td class="data">$8.</td>
+<td class="data">$8.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">phone</td>
+<td class="data">Num</td>
+<td class="r data">8</td>
+<td class="data">BEST12.</td>
+<td class="data">BEST32.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">30</th>
+<td class="data">phone_clean</td>
+<td class="data">Char</td>
+<td class="r data">20</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">region</td>
+<td class="data">Char</td>
+<td class="r data">5</td>
+<td class="data">$5.</td>
+<td class="data">$5.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">state</td>
+<td class="data">Char</td>
+<td class="r data">13</td>
+<td class="data">$13.</td>
+<td class="data">$13.</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">28</th>
+<td class="data">state_clean</td>
+<td class="data">Char</td>
+<td class="r data">13</td>
+<td class="data">&#160;</td>
+<td class="data">&#160;</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+</div>
+</body>
+</html>

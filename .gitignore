@@ -1,12 +1,14 @@
 
-# Exclude datasets
-data/raw/
-data/processed/
+# Temporary files
+*.tmp
+*.bak
+*.log
 
-# Exclude generated SAS results
-sas/result/
+# Operating system files
+Thumbs.db
+.DS_Store
 
-# Exclude environment and secret files
+# Environment files and secrets
 .env
 .env.*
 !.env.example

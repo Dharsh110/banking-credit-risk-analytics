@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html class="ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS 9.4" name="generator"/>
+<title>Results: 08_validate_dataset_relationships.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c section > table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c section > pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c div > table,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c div > pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c article > table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c article > pre,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j section > table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j section > pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j div > table,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j div > pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j article > table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j article > pre,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c p.note, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c p.warning, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c p.error, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c p.fatal,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j p.note, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j p.warning, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j p.error, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j p.fatal,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.c > table.layoutcontainer, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.l table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.l pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.l p.note,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.l p.warning, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.l p.error, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.l p.fatal { margin-left: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.c table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.c pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.c p.note,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.c p.warning, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.c p.error, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r p.note,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r table, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r pre, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r p.note,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r p.warning, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r p.error, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion.r p.fatal { margin-right: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d article, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d aside, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d details, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d figcaption, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d figure, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d footer, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d header, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d hgroup, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d nav, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d section { display: block }
+html.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d { font-size: 100% }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d ul, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d dd { margin: 0 0 0 40px }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d nav ul, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d img { border: 0; vertical-align: middle }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d svg:not(:root) { overflow: hidden }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d figure { margin: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d table { border-collapse: collapse; border-spacing: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d p { margin-top: 0; text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d h1.heading1 { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d h2.heading2 { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d h3.heading3 { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d h4.heading4 { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d h5.heading5 { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d h6.heading6 { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d span { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d table { margin-bottom: 1em }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d td, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d td[class$="fixed"], .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d th[class$="fixed"] { white-space: pre }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d section, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d article { padding-top: 1px; padding-bottom: 8px }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .stacked-value { text-align: left; display: block }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .stacked-cell > .stacked-value, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d td.data > td.data, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d th.data > td.data, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d th.data > th.data, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d td.data > th.data, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d th.header > th.header { border: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .stacked-cell > div.data { border-width: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > p { margin: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .batch { display: table }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .toc { display: none }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .proc_note_group, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .proc_title_group { margin-bottom: 1em }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d p.proctitle { margin: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d p.note, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d p.warning, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d p.error, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d p.fatal { display: table }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .notebanner, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .warnbanner, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .errorbanner, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .fatalbanner,
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .notecontent, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .warncontent, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .errorcontent, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .notebanner, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .warnbanner, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .errorbanner, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .fatalbanner { padding-right: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body > div > ol li { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .c { text-align: center }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .r { text-align: right }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .l { text-align: left }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .j { text-align: justify }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .d { text-align: right }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .b { vertical-align: bottom }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .m { vertical-align: middle }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .t { vertical-align: top }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .accessiblecaption {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d a:active { color: #800080 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .batch > tbody, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .batch > thead, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .batch { border: hidden; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > colgroup > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > colgroup, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > * > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > thead, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > tbody, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer > tfoot { border: none; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .cell, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .contentfolder, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .contentproclabel, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .data, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .graph > tbody, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .graph > thead, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .graph { border: hidden; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .heading1, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .heading2, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .heading3, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .heading4, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .heading5, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .heading6 { font-family: Arial, Helvetica, sans-serif }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .indexaction, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutcontainer, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d a:link { color: #0000ff }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list3, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list4, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list5, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list6, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list7, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list8, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem3, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem4, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem5, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem6, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem7, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem8, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .output > tbody, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .output > thead, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .output { border: hidden; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .pagesproclabel, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > colgroup > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > colgroup, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > * > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > thead, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > tbody, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip > tfoot { border: none; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter10, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter2, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter3, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter4, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter5, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter6, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter7, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter8, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle10, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle2, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle3, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle4, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle5, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle6, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle7, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle8, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > colgroup > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > colgroup, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > * > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > thead, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > tbody, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer > tfoot { border: none; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .table > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .table > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .table { border: hidden; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > colgroup > col, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > colgroup, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > * > tr, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > thead, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > tbody, .ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer > tfoot { border: none; }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d a:visited { color: #800080 }
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_8d2f818d-3b34-4d65-a0a4-0adb1611a63d .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_8d2f818d-3b34-4d65-a0a4-0adb1611a63d" class="c body">
+<h1 class="body toc">Results: 08_validate_dataset_relationships.sas</h1>
+<section data-name="SQL" data-sec-type="proc">
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article id="IDX" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="b header" scope="col">Check_Name</th>
+<th class="r b header" scope="col">Issue_Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">Loans without matching customers</td>
+<td class="r data">25</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<article id="IDX1" aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="b header" scope="col">Check_Name</th>
+<th class="r b header" scope="col">Issue_Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">Payments without matching loans</td>
+<td class="r data">0</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX2" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Loans Without Matching Customers</span> </p>
+</div>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article aria-label="Data Set WORK.UNMATCHED_LOANS">
+<h1 class="contentitem toc">Data Set WORK.UNMATCHED_LOANS</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.UNMATCHED_LOANS">
+<caption aria-label="Data Set WORK.UNMATCHED_LOANS"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">loan_id</th>
+<th class="header" scope="col">customer_id</th>
+<th class="header" scope="col">loan_type</th>
+<th class="header" scope="col">loan_purpose</th>
+<th class="r header" scope="col">loan_amount</th>
+<th class="r header" scope="col">interest_rate</th>
+<th class="r header" scope="col">term_months</th>
+<th class="r header" scope="col">emi_amount</th>
+<th class="header" scope="col">origination_date</th>
+<th class="header" scope="col">maturity_date</th>
+<th class="r header" scope="col">collateral_value</th>
+<th class="header" scope="col">branch_channel</th>
+<th class="header" scope="col">loan_status</th>
+<th class="r header" scope="col">days_past_due</th>
+<th class="r header" scope="col">overdue_amount</th>
+<th class="r header" scope="col">outstanding_balance</th>
+<th class="r header" scope="col">default_flag</th>
+<th class="header" scope="col">default_date</th>
+<th class="header" scope="col">snapshot_date</th>
+<th class="header" scope="col">loan_id_clean</th>
+<th class="header" scope="col">customer_id_clean</th>
+<th class="header" scope="col">loan_status_clean</th>
+<th class="header" scope="col">loan_amount_quality_flag</th>
+<th class="header" scope="col">interest_rate_quality_flag</th>
+<th class="header" scope="col">default_flag_quality</th>
+<th class="header" scope="col">default_date_quality_flag</th>
+<th class="header" scope="col">origination_date_quality_flag</th>
+<th class="header" scope="col">maturity_date_quality_flag</th>
+<th class="header" scope="col">snapshot_date_quality_flag</th>
+<th class="header" scope="col">default_date_original</th>
+<th class="header" scope="col">origination_date_original</th>
+<th class="header" scope="col">maturity_date_original</th>
+<th class="header" scope="col">snapshot_date_original</th>
+<th class="header" scope="col">default_consistency_flag</th>
+<th class="r header" scope="col">loan_amount_original</th>
+<th class="r header" scope="col">interest_rate_original</th>
+<th class="r header" scope="col">default_flag_original</th>
+<th class="r header" scope="col">loan_amount_clean</th>
+<th class="r header" scope="col">origination_date_sas</th>
+<th class="r header" scope="col">maturity_date_sas</th>
+<th class="r header" scope="col">default_date_sas</th>
+<th class="r header" scope="col">snapshot_date_sas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">LN0000963</td>
+<td class="data">CUST90183</td>
+<td class="data">Auto</td>
+<td class="data">Two Wheeler</td>
+<td class="r data">490000</td>
+<td class="r data">10.78</td>
+<td class="r data">60</td>
+<td class="r data">10600.11</td>
+<td class="data">2023-05-10</td>
+<td class="data">2028-05-10</td>
+<td class="r data">506000</td>
+<td class="data">Branch</td>
+<td class="data">Late</td>
+<td class="r data">20</td>
+<td class="r data">10600.11</td>
+<td class="r data">202042.03</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0000963</td>
+<td class="data">CUST90183</td>
+<td class="data">Late</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2023-05-10</td>
+<td class="data">2028-05-10</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">490000</td>
+<td class="r data">10.78</td>
+<td class="r data">0</td>
+<td class="r data">490000</td>
+<td class="r data">10MAY2023</td>
+<td class="r data">10MAY2028</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">LN0001930</td>
+<td class="data">CUST90244</td>
+<td class="data">Auto</td>
+<td class="data">Used Car</td>
+<td class="r data">210000</td>
+<td class="r data">10.52</td>
+<td class="r data">84</td>
+<td class="r data">3542.93</td>
+<td class="data">2022-02-01</td>
+<td class="data">2029-02-01</td>
+<td class="r data">206000</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">90376.94</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+<td class="data">LN0001930</td>
+<td class="data">CUST90244</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2022-02-01</td>
+<td class="data">2029-02-01</td>
+<td class="data">30/09/2026</td>
+<td class="data">Consistent</td>
+<td class="r data">210000</td>
+<td class="r data">10.52</td>
+<td class="r data">0</td>
+<td class="r data">210000</td>
+<td class="r data">01FEB2022</td>
+<td class="r data">01FEB2029</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">LN0001182</td>
+<td class="data">CUST90951</td>
+<td class="data">Education</td>
+<td class="data">Domestic Study</td>
+<td class="r data">2965000</td>
+<td class="r data">10.77</td>
+<td class="r data">84</td>
+<td class="r data">50410.17</td>
+<td class="data">10-Dec-2025</td>
+<td class="data">2032-12-10</td>
+<td class="r data">.</td>
+<td class="data">DSA / Agent</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">2742953.57</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+<td class="data">LN0001182</td>
+<td class="data">CUST90951</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">10-Dec-2025</td>
+<td class="data">2032-12-10</td>
+<td class="data">30/09/2026</td>
+<td class="data">Consistent</td>
+<td class="r data">2965000</td>
+<td class="r data">10.77</td>
+<td class="r data">0</td>
+<td class="r data">2965000</td>
+<td class="r data">10DEC2025</td>
+<td class="r data">10DEC2032</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">LN0001627</td>
+<td class="data">CUST90982</td>
+<td class="data">Personal</td>
+<td class="data">Debt Consolidation</td>
+<td class="r data">470000</td>
+<td class="r data">13.9</td>
+<td class="r data">48</td>
+<td class="r data">12819.88</td>
+<td class="data">28-Aug-2025</td>
+<td class="data">2029-08-28</td>
+<td class="r data">.</td>
+<td class="data">DSA / Agent</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">367160.37</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+<td class="data">LN0001627</td>
+<td class="data">CUST90982</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">28-Aug-2025</td>
+<td class="data">2029-08-28</td>
+<td class="data">30/09/2026</td>
+<td class="data">Consistent</td>
+<td class="r data">470000</td>
+<td class="r data">13.90</td>
+<td class="r data">0</td>
+<td class="r data">470000</td>
+<td class="r data">28AUG2025</td>
+<td class="r data">28AUG2029</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">LN0001283</td>
+<td class="data">CUST91231</td>
+<td class="data">Business</td>
+<td class="data">Equipment</td>
+<td class="r data">1015000</td>
+<td class="r data">12.25</td>
+<td class="r data">60</td>
+<td class="r data">22706.55</td>
+<td class="data">01/08/2024</td>
+<td class="data">01-Aug-2029</td>
+<td class="r data">1037000</td>
+<td class="data">DSA / Agent</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">665433.45</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0001283</td>
+<td class="data">CUST91231</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">01/08/2024</td>
+<td class="data">01-Aug-2029</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">1015000</td>
+<td class="r data">12.25</td>
+<td class="r data">0</td>
+<td class="r data">1015000</td>
+<td class="r data">01AUG2024</td>
+<td class="r data">01AUG2029</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">LN0000297</td>
+<td class="data">CUST91489</td>
+<td class="data">Personal</td>
+<td class="data">Medical</td>
+<td class="r data">115000</td>
+<td class="r data">14</td>
+<td class="r data">60</td>
+<td class="r data">2675.85</td>
+<td class="data">06/07/2022</td>
+<td class="data">06/07/2027</td>
+<td class="r data">.</td>
+<td class="data">Online</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">25118.59</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30-Sep-2026</td>
+<td class="data">LN0000297</td>
+<td class="data">CUST91489</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">06/07/2022</td>
+<td class="data">06/07/2027</td>
+<td class="data">30-Sep-2026</td>
+<td class="data">Consistent</td>
+<td class="r data">115000</td>
+<td class="r data">14.00</td>
+<td class="r data">0</td>
+<td class="r data">115000</td>
+<td class="r data">06JUL2022</td>
+<td class="r data">06JUL2027</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">LN0004760</td>
+<td class="data">CUST92035</td>
+<td class="data">education</td>
+<td class="data">Domestic Study</td>
+<td class="r data">1195000</td>
+<td class="r data">12.34</td>
+<td class="r data">120</td>
+<td class="r data">17380.47</td>
+<td class="data">2023-10-14</td>
+<td class="data">14-Oct-2033</td>
+<td class="r data">.</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">981795.27</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+<td class="data">LN0004760</td>
+<td class="data">CUST92035</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2023-10-14</td>
+<td class="data">14-Oct-2033</td>
+<td class="data">30/09/2026</td>
+<td class="data">Consistent</td>
+<td class="r data">1195000</td>
+<td class="r data">12.34</td>
+<td class="r data">0</td>
+<td class="r data">1195000</td>
+<td class="r data">14OCT2023</td>
+<td class="r data">14OCT2033</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">LN0005634</td>
+<td class="data">CUST92368</td>
+<td class="data">Auto</td>
+<td class="data">New Car</td>
+<td class="r data">390000</td>
+<td class="r data">11.31</td>
+<td class="r data">48</td>
+<td class="r data">10138.57</td>
+<td class="data">07/12/2023</td>
+<td class="data">2027-12-07</td>
+<td class="r data">372000</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">141199.02</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0005634</td>
+<td class="data">CUST92368</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">07/12/2023</td>
+<td class="data">2027-12-07</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">390000</td>
+<td class="r data">11.31</td>
+<td class="r data">0</td>
+<td class="r data">390000</td>
+<td class="r data">07DEC2023</td>
+<td class="r data">07DEC2027</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">LN0005606</td>
+<td class="data">CUST92524</td>
+<td class="data">Home</td>
+<td class="data">Construction</td>
+<td class="r data">1130000</td>
+<td class="r data">9.27</td>
+<td class="r data">240</td>
+<td class="r data">10363.95</td>
+<td class="data">2022-01-16</td>
+<td class="data">16/01/2042</td>
+<td class="r data">1691000</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1016004.89</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0005606</td>
+<td class="data">CUST92524</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2022-01-16</td>
+<td class="data">16/01/2042</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">1130000</td>
+<td class="r data">9.27</td>
+<td class="r data">0</td>
+<td class="r data">1130000</td>
+<td class="r data">16JAN2022</td>
+<td class="r data">16JAN2042</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">LN0003933</td>
+<td class="data">CUST93575</td>
+<td class="data">Personal</td>
+<td class="data">Debt Consolidation</td>
+<td class="r data">35000</td>
+<td class="r data">14.6</td>
+<td class="r data">60</td>
+<td class="r data">825.32</td>
+<td class="data">23/08/2023</td>
+<td class="data">23/08/2028</td>
+<td class="r data">.</td>
+<td class="data">Online</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">16470.88</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0003933</td>
+<td class="data">CUST93575</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">23/08/2023</td>
+<td class="data">23/08/2028</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">35000</td>
+<td class="r data">14.60</td>
+<td class="r data">0</td>
+<td class="r data">35000</td>
+<td class="r data">23AUG2023</td>
+<td class="r data">23AUG2028</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">LN0005573</td>
+<td class="data">CUST93817</td>
+<td class="data">Personal</td>
+<td class="data">Travel</td>
+<td class="r data">90000</td>
+<td class="r data">14.52</td>
+<td class="r data">48</td>
+<td class="r data">2482.92</td>
+<td class="data">2022-02-21</td>
+<td class="data">2026-02-21</td>
+<td class="r data">.</td>
+<td class="data">Branch</td>
+<td class="data">Closed</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+<td class="data">LN0005573</td>
+<td class="data">CUST93817</td>
+<td class="data">Closed</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2022-02-21</td>
+<td class="data">2026-02-21</td>
+<td class="data">30/09/2026</td>
+<td class="data">Consistent</td>
+<td class="r data">90000</td>
+<td class="r data">14.52</td>
+<td class="r data">0</td>
+<td class="r data">90000</td>
+<td class="r data">21FEB2022</td>
+<td class="r data">21FEB2026</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">LN0004425</td>
+<td class="data">CUST94218</td>
+<td class="data">Auto</td>
+<td class="data">New Car</td>
+<td class="r data">940000</td>
+<td class="r data">10.14</td>
+<td class="r data">48</td>
+<td class="r data">23904.08</td>
+<td class="data">2022-08-28</td>
+<td class="data">2026-08-28</td>
+<td class="r data">921000</td>
+<td class="data">DSA / Agent</td>
+<td class="data">Closed</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30.09.2026</td>
+<td class="data">LN0004425</td>
+<td class="data">CUST94218</td>
+<td class="data">Closed</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2022-08-28</td>
+<td class="data">2026-08-28</td>
+<td class="data">30.09.2026</td>
+<td class="data">Consistent</td>
+<td class="r data">940000</td>
+<td class="r data">10.14</td>
+<td class="r data">0</td>
+<td class="r data">940000</td>
+<td class="r data">28AUG2022</td>
+<td class="r data">28AUG2026</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">LN0002630</td>
+<td class="data">CUST94517</td>
+<td class="data">Education</td>
+<td class="data">Overseas Study</td>
+<td class="r data">630000</td>
+<td class="r data">10.95</td>
+<td class="r data">120</td>
+<td class="r data">8660.43</td>
+<td class="data">2024-05-18</td>
+<td class="data">18-May-2034</td>
+<td class="r data">.</td>
+<td class="data">Branch</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">537588.25</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0002630</td>
+<td class="data">CUST94517</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2024-05-18</td>
+<td class="data">18-May-2034</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">630000</td>
+<td class="r data">10.95</td>
+<td class="r data">0</td>
+<td class="r data">630000</td>
+<td class="r data">18MAY2024</td>
+<td class="r data">18MAY2034</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">LN0001361</td>
+<td class="data">CUST94713</td>
+<td class="data">Education</td>
+<td class="data">Domestic Study</td>
+<td class="r data">610000</td>
+<td class="r data">11.16</td>
+<td class="r data">120</td>
+<td class="r data">8458.09</td>
+<td class="data">2022-05-10</td>
+<td class="data">2032-05-10</td>
+<td class="r data">.</td>
+<td class="data">Online</td>
+<td class="data">Current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">424841.82</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0001361</td>
+<td class="data">CUST94713</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2022-05-10</td>
+<td class="data">2032-05-10</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">610000</td>
+<td class="r data">11.16</td>
+<td class="r data">0</td>
+<td class="r data">610000</td>
+<td class="r data">10MAY2022</td>
+<td class="r data">10MAY2032</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">LN0000656</td>
+<td class="data">CUST94875</td>
+<td class="data">Business</td>
+<td class="data">Equipment</td>
+<td class="r data">230000</td>
+<td class="r data">11.93</td>
+<td class="r data">84</td>
+<td class="r data">4051.52</td>
+<td class="data">09-Oct-2024</td>
+<td class="data">2031-10-09</td>
+<td class="r data">298000</td>
+<td class="data">Branch</td>
+<td class="data">Default</td>
+<td class="r data">144</td>
+<td class="r data">20257.6</td>
+<td class="r data">195398.74</td>
+<td class="r data">1</td>
+<td class="data">2026-08-07</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0000656</td>
+<td class="data">CUST94875</td>
+<td class="data">Defaulted</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">2026-08-07</td>
+<td class="data">09-Oct-2024</td>
+<td class="data">2031-10-09</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">230000</td>
+<td class="r data">11.93</td>
+<td class="r data">1</td>
+<td class="r data">230000</td>
+<td class="r data">09OCT2024</td>
+<td class="r data">09OCT2031</td>
+<td class="r data">07AUG2026</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">LN0001707</td>
+<td class="data">CUST95187</td>
+<td class="data">Personal</td>
+<td class="data">Home Renovation</td>
+<td class="r data">150000</td>
+<td class="r data">13.82</td>
+<td class="r data">48</td>
+<td class="r data">4085.44</td>
+<td class="data">09-Aug-2025</td>
+<td class="data">09-Aug-2029</td>
+<td class="r data">.</td>
+<td class="data">Branch</td>
+<td class="data">Default</td>
+<td class="r data">264</td>
+<td class="r data">36768.96</td>
+<td class="r data">140404.05</td>
+<td class="r data">1</td>
+<td class="data">2026-04-09</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0001707</td>
+<td class="data">CUST95187</td>
+<td class="data">Defaulted</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">2026-04-09</td>
+<td class="data">09-Aug-2025</td>
+<td class="data">09-Aug-2029</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">150000</td>
+<td class="r data">13.82</td>
+<td class="r data">1</td>
+<td class="r data">150000</td>
+<td class="r data">09AUG2025</td>
+<td class="r data">09AUG2029</td>
+<td class="r data">09APR2026</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">LN0005743</td>
+<td class="data">CUST96060</td>
+<td class="data">Personal</td>
+<td class="data">Medical</td>
+<td class="r data">220000</td>
+<td class="r data">14.12</td>
+<td class="r data">48</td>
+<td class="r data">6025.08</td>
+<td class="data">07-Feb-2023</td>
+<td class="data">07-Feb-2027</td>
+<td class="r data">.</td>
+<td class="data">Branch</td>
+<td class="data">CURRENT</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">29090.27</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0005743</td>
+<td class="data">CUST96060</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">07-Feb-2023</td>
+<td class="data">07-Feb-2027</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">220000</td>
+<td class="r data">14.12</td>
+<td class="r data">0</td>
+<td class="r data">220000</td>
+<td class="r data">07FEB2023</td>
+<td class="r data">07FEB2027</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">LN0002881</td>
+<td class="data">CUST96269</td>
+<td class="data">Personal</td>
+<td class="data">Wedding</td>
+<td class="r data">90000</td>
+<td class="r data">13.38</td>
+<td class="r data">24</td>
+<td class="r data">4294.85</td>
+<td class="data">2021-01-13</td>
+<td class="data">13-Jan-2023</td>
+<td class="r data">.</td>
+<td class="data">Branch</td>
+<td class="data">Default</td>
+<td class="r data">1448</td>
+<td class="r data">17179.4</td>
+<td class="r data">16710.88</td>
+<td class="r data">1</td>
+<td class="data">2023-01-11</td>
+<td class="data">2026-09-30</td>
+<td class="data">LN0002881</td>
+<td class="data">CUST96269</td>
+<td class="data">Defaulted</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">2023-01-11</td>
+<td class="data">2021-01-13</td>
+<td class="data">13-Jan-2023</td>
+<td class="data">2026-09-30</td>
+<td class="data">Consistent</td>
+<td class="r data">90000</td>
+<td class="r data">13.38</td>
+<td class="r data">1</td>
+<td class="r data">90000</td>
+<td class="r data">13JAN2021</td>
+<td class="r data">13JAN2023</td>
+<td class="r data">11JAN2023</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">LN0003288</td>
+<td class="data">CUST96421</td>
+<td class="data">Business</td>
+<td class="data">Expansion</td>
+<td class="r data">1210000</td>
+<td class="r data">13.68</td>
+<td class="r data">24</td>
+<td class="r data">57912.84</td>
+<td class="data">09.12.2021</td>
+<td class="data">2023-12-09</td>
+<td class="r data">1057000</td>
+<td class="data">Branch</td>
+<td class="data">Default</td>
+<td class="r data">1148</td>
+<td class="r data">289564.2</td>
+<td class="r data">279918.58</td>
+<td class="r data">1</td>
+<td class="data">2023-11-07</td>
+<td class="data">30/09/2026</td>
+<td class="data">LN0003288</td>
+<td class="data">CUST96421</td>
+<td class="data">Defaulted</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">2023-11-07</td>
+<td class="data">09.12.2021</td>
+<td class="data">2023-12-09</td>
+<td class="data">30/09/2026</td>
+<td class="data">Consistent</td>
+<td class="r data">1210000</td>
+<td class="r data">13.68</td>
+<td class="r data">1</td>
+<td class="r data">1210000</td>
+<td class="r data">09DEC2021</td>
+<td class="r data">09DEC2023</td>
+<td class="r data">07NOV2023</td>
+<td class="r data">30SEP2026</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">20</th>
+<td class="data">LN0003598</td>
+<td class="data">CUST96593</td>
+<td class="data">Personal</td>
+<td class="data">Debt Consolidation</td>
+<td class="r data">30000</td>
+<td class="r data">12.57</td>
+<td class="r data">60</td>
+<td class="r data">676.01</td>
+<td class="data">2026-04-21</td>
+<td class="data">21-Apr-2031</td>
+<td class="r data">.</td>
+<td class="data">DSA / Agent</td>
+<td class="data">current</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">28152.91</td>
+<td class="r data">0</td>
+<td class="data"> &#160;</td>
+<td class="data">30/09/2026</td>
+<td class="data">LN0003598</td>
+<td class="data">CUST96593</td>
+<td class="data">Current</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Missing</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data">Valid</td>
+<td class="data"> &#160;</td>
+<td class="data">2026-04-21</td>
+<td class="data">21-Apr-2031</td>
+<td class="data">30/09/2026</td>
+<td class="data">Consistent</td>
+<td class="r data">30000</td>
+<td class="r data">12.57</td>
+<td class="r data">0</td>
+<td class="r data">30000</td>
+<td class="r data">21APR2026</td>
+<td class="r data">21APR2031</td>
+<td class="r data">.</td>
+<td class="r data">30SEP2026</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX3" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Payments Without Matching Loans</span> </p>
+</div>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Customer_Rows</th>
+<th class="r b header" scope="col">Unique_Customer_IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">4000</td>
+<td class="r data">4000</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX4" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Payments Without Matching Loans</span> </p>
+</div>
+<article aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Loan_Rows</th>
+<th class="r b header" scope="col">Unique_Loan_IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">6000</td>
+<td class="r data">6000</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX5" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Payments Without Matching Loans</span> </p>
+</div>
+<article aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">Payment_Rows</th>
+<th class="r b header" scope="col">Unique_Payment_IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">174596</td>
+<td class="r data">174596</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</div>
+</body>
+</html>
