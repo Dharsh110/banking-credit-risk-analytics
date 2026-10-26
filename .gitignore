@@ -1,0 +1,12 @@
+
+# Exclude datasets
+data/raw/
+data/processed/
+
+# Exclude generated SAS results
+sas/result/
+
+# Exclude environment and secret files
+.env
+.env.*
+!.env.example
