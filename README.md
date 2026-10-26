@@ -2,15 +2,9 @@
 # Banking Credit Risk & Loan Default Analytics
 
 An end-to-end data analytics project using **SAS and Microsoft Power BI** to analyze banking customers, loan portfolios, default risk, payment performance, and data quality.
-
-<p align="center">
-  <img src="powerbi/Dashboard%20screenshot.png" alt="Banking Credit Risk and Loan Default Analytics Power BI Dashboard" width="100%">
-</p>
-
 <p align="center">
   <strong>SAS | Power BI | DAX | Power Query | Data Cleaning | Data Visualization</strong>
 </p>
----
 
 ## Project Overview
 
@@ -156,9 +150,6 @@ The dashboard is designed to provide an overview of credit risk, loan portfolio 
 
 ![Banking Credit Risk Analytics Dashboard](powerbi/Dashboard%20screenshot.png)
 
-[View the dashboard screenshot](powerbi/Dashboard%20screenshot.png)
-
-
 ---
 
 ## Key Performance Indicators
@@ -287,7 +278,3 @@ Use these files to understand the transformation from source data to the dataset
 
 Computer Science and Engineering Graduate | Aspiring Data Analyst
 - Project Repository: [Banking Credit Risk & Loan Default Analytics](https://github.com/Dharsh110/banking-credit-risk-analytics)
-
----
-
-If you find this project useful, feel free to explore the SAS programs, review the dashboard, and learn from the data preparation and validation workflow.
